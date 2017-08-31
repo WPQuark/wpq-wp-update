@@ -63,13 +63,13 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 		// If could not verify
 		if ( ! $item_data ) {
 			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Purchase Code', 'wpq-wp-update' ), array(
-				'status' => 400,
+				'status' => 401,
 			) );
 		}
 		// If found, but item id does not match
 		if ( $item_id != $item_data['item_id'] ) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'Purchase Code not valid for slug', 'wpq-wp-update' ), array(
-				'status' => 400,
+				'status' => 401,
 			) );
 		}
 		// Item data found, so save it with a new register token
@@ -107,13 +107,13 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 		// Check the slug
 		if ( ! isset( $request['slug'] ) || empty( $request['slug'] ) ) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'No slug specified', 'wpq-wp-update' ), array(
-				'status' => 400,
+				'status' => 401,
 			) );
 		}
 		// Check purchase code
 		if ( ! isset( $_REQUEST['purchase_code'] ) ) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'No purchase code specified', 'wpq-wp-update' ), array(
-				'status' => 400,
+				'status' => 401,
 			) );
 		}
 		// Now see if the slug is present in the config
