@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
 					'static/**/js/**',
 					'static/**/css/**',
 					'static/**/images/**',
+					'static/lib/**',
 					// == Vendors
 					// All of the licenses
 					'vendor/**/LICENSE*',

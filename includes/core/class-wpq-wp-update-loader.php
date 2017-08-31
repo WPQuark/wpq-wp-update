@@ -94,19 +94,25 @@ class WPQ_WP_Update_Loader {
 		// Auto upgrade
 		add_action( 'plugins_loaded', array( $this, 'auto_upgrade' ) );
 
+		// Init globals
+		$this->init_globals();
+
 		// Do some admin related stuff
 		if ( is_admin() ) {
 			// Extendible WP CPL Settings
 			add_action( 'plugins_loaded', array( $this, 'init_admin_menus' ), 20 );
 			// Add our glorified settings page
-			self::$init_classes = array( 'WPQ_SP_Dashboard', 'WPQ_SP_Admin_User_Network', 'WPQ_SP_Admin_Publicize', 'WPQ_SP_Admin_Accapi', 'WPQ_SP_Vue_Test', 'WPQ_SP_UI_Test' );
+			self::$init_classes = array( 'WPQ_WP_Update_Dashboard', 'WPQ_WP_Update_Settings' );
 			add_action( 'admin_init', array( $this, 'gen_admin_menu' ), 20 );
 			// Add some CSS/JS to the widgets and customizer area
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_menu_style' ) );
 		}
+	}
 
-		// Our session loader
-		add_action( 'init', array( $this, 'session' ) );
+	public function init_globals() {
+		global $wpq_wp_update, $wpq_wp_update_config;
+		$wpq_wp_update = get_option( 'wpq_wp_update' );
+		$wpq_wp_update_config = get_option( 'wpq_wp_update_config' );
 	}
 
 	/*==========================================================================
@@ -120,7 +126,7 @@ class WPQ_WP_Update_Loader {
 	 * @codeCoverageIgnore
 	 */
 	public function init_admin_menus() {
-		self::$init_classes = apply_filters( 'wpq_sp_admin_menus', self::$init_classes );
+		self::$init_classes = apply_filters( 'wpq_wp_update_admin_classes', self::$init_classes );
 		foreach ( (array) self::$init_classes as $class ) {
 			if ( class_exists( $class ) ) {
 				global ${'admin_menu' . $class};
@@ -172,8 +178,8 @@ class WPQ_WP_Update_Loader {
 	 */
 	public function admin_enqueue_script_style() {
 		// All files needed by UI
-		$ui = WPQ_SP_Admin_UI::get_instance();
-		$ui->enqueue( apply_filters( 'wpq_sp_admin_ignore_js', array() ) );
+		$ui = WPQ_WP_Update_Admin_UI::get_instance();
+		$ui->enqueue( apply_filters( 'wpq_wp_update_admin_ignore_js', array() ) );
 
 		// Other files needed by the main plugin
 	}
@@ -194,7 +200,7 @@ class WPQ_WP_Update_Loader {
 	 * @codeCoverageIgnore
 	 */
 	public function plugin_install( $network_wide = false ) {
-		$install = new WPQ_SP_Install();
+		$install = new WPQ_WP_Update_Install();
 		$install->install( $network_wide );
 	}
 
@@ -202,9 +208,9 @@ class WPQ_WP_Update_Loader {
 	 * @codeCoverageIgnore
 	 */
 	public function auto_upgrade() {
-		global $wpq_sp_info;
-		if ( ! isset( $wpq_sp_info['version'] ) || version_compare( $wpq_sp_info['version'], self::$version, '<' ) ) {
-			$install = new WPQ_SP_Install();
+		global $wpq_wp_update;
+		if ( ! isset( $wpq_wp_update['version'] ) || version_compare( $wpq_wp_update['version'], self::$version, '<' ) ) {
+			$install = new WPQ_WP_Update_Install();
 			$install->upgrade();
 		}
 	}

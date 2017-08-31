@@ -4,12 +4,12 @@
  *
  * Check the methods and examples
  *
- * @package    SocialPress - WordPress Social Marketing Solution
- * @subpackage Admin Interface Classes
+ * @package    WPUpdate
+ * @subpackage Admin\Pages
  * @author     Swashata Ghosh <swashata@wpquark.com>
  *
  */
-abstract class WPQ_SP_Admin {
+abstract class WPQ_WP_Update_Admin {
 	/**
 	 * Duplicates the $_POST content and properly process it
 	 * Holds the typecasted (converted int and floats properly and escaped html) value after the constructor has been called
@@ -90,7 +90,7 @@ abstract class WPQ_SP_Admin {
 	/**
 	 * The USER INTERFACE Object
 	 *
-	 * @var WPQ_SP_Admin_UI
+	 * @var WPQ_WP_Update_Admin_UI
 	 */
 	public $ui;
 
@@ -114,21 +114,21 @@ abstract class WPQ_SP_Admin {
 		}
 
 		// Store the UI
-		$this->ui = WPQ_SP_Admin_UI::get_instance();
+		$this->ui = WPQ_WP_Update_Admin_UI::get_instance();
 
 		// Default action messages
 		$this->post_result = array(
 			1 => array(
 				'type' => 'okay',
-				'msg' => __( 'Successfully saved the options.', 'wpq-sp' ),
+				'msg' => __( 'Successfully saved the options.', 'wpq-wp-update' ),
 			),
 			2 => array(
 				'type' => 'error',
-				'msg' => __( 'Either you have not changed anything or some error has occured. Please contact the developer.', 'wpq-sp' ),
+				'msg' => __( 'Either you have not changed anything or some error has occured. Please contact the developer.', 'wpq-wp-update' ),
 			),
 			3 => array(
 				'type' => 'okay',
-				'msg' => __( 'The Master Reset was successful.', 'wpq-sp' ),
+				'msg' => __( 'The Master Reset was successful.', 'wpq-wp-update' ),
 			),
 		);
 		// Calculate the admin post action
@@ -214,7 +214,7 @@ abstract class WPQ_SP_Admin {
 	<?php $this->ui->clear(); ?>
 	<?php if ( ! $skip_css ) : ?>
 		<?php
-		$this->ui->ajax_loader( false, true, __( 'Loading', 'wpq-sp' ), 'wpq-sp-backoffice-init-ajax-loader', array( 'wpq-sp-backoffice-init-ajax-loader' ) );
+		$this->ui->ajax_loader( false, true, __( 'Loading', 'wpq-wp-update' ), 'wpq-sp-backoffice-init-ajax-loader', array( 'wpq-sp-backoffice-init-ajax-loader' ) );
 		?>
 	<?php endif; ?>
 	<div class="ipt-ui-backoffice-main-wrap" style="max-width: <?php echo esc_attr( $max_width ); ?>">
@@ -238,9 +238,9 @@ abstract class WPQ_SP_Admin {
 		$form_classes[] = 'wpq-sp-backoffice-form';
 		if ( $this->ajax_form ) {
 			$form_classes[] = 'wpq-sp-backoffice-form-ajax';
-			$this->ui->ajax_loader( true, false, __( 'Processing', 'wpq-sp' ), 'wpq-sp-backoffice-form-ajax-loader', array( 'wpq-sp-backoffice-ajax-loader' ), array(
-				'success' => __( 'Successfully saved the options', 'wpq-sp' ),
-				'error' => __( 'Some error has occured', 'wpq-sp' ),
+			$this->ui->ajax_loader( true, false, __( 'Processing', 'wpq-wp-update' ), 'wpq-sp-backoffice-form-ajax-loader', array( 'wpq-sp-backoffice-ajax-loader' ), array(
+				'success' => __( 'Successfully saved the options', 'wpq-wp-update' ),
+				'error' => __( 'Some error has occured', 'wpq-wp-update' ),
 			) );
 		}
 	}
@@ -258,11 +258,11 @@ abstract class WPQ_SP_Admin {
 		// Calculate the buttons
 		$buttons = array();
 		if ( false !== $save ) {
-			$save = ( empty( $save ) ? __( 'Save Changes', 'wpq-sp' ) : $save );
+			$save = ( empty( $save ) ? __( 'Save Changes', 'wpq-wp-update' ) : $save );
 			$buttons[] = array( $save, 'submit', 'medium' );
 		}
 		if ( false !== $reset ) {
-			$reset = ( empty( $reset ) ? __( 'Reset', 'wpq-sp' ) : $reset );
+			$reset = ( empty( $reset ) ? __( 'Reset', 'wpq-wp-update' ) : $reset );
 			$buttons[] = array( $reset, 'reset', 'medium' );
 		}
 

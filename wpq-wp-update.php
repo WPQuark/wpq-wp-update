@@ -5,7 +5,7 @@ Description: WP Update Server for your private & commercial Plugins
 Plugin URI: http://wpquark.com
 Author: Swashata
 Author URI: http://swashata.me
-Version: 0.0.1
+Version: 0.0.3
 License: GPL3
 Text Domain: wpq-wp-update
 Domain Path: translations
@@ -35,3 +35,6 @@ define( 'WPQ_WPUPDATE_ABSPATH', trailingslashit( dirname( __FILE__ ) ) );
 // Include composer
 require_once WPQ_WPUPDATE_ABSPATH . 'vendor/autoload.php';
 
+global $wpq_wp_update_load;
+$wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.0.3' );
+$wpq_wp_update_load->load();

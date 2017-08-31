@@ -6,23 +6,23 @@
  *
  * It is a singleton class
  *
- * @package SocialPress - WordPress Social Marketing Solution
- * @subpackage System Classes
+ * @package WPUpdate
+ * @subpackage Admin\UI
  * @author Swashata Ghosh <swashata@wpquark.com>
  */
 
-class WPQ_SP_Admin_UI {
+class WPQ_WP_Update_Admin_UI {
 	/**
 	 * Instance variable
 	 *
-	 * @var        WPQ_SP_Admin_UI
+	 * @var        WPQ_WP_Update_Admin_UI
 	 */
 	private static $instance = null;
 
 	/**
 	 * Gets the instance.
 	 *
-	 * @return     WPQ_SP_Admin_UI  The instance.
+	 * @return     WPQ_WP_Update_Admin_UI  The instance.
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {
@@ -54,8 +54,8 @@ class WPQ_SP_Admin_UI {
 	 * @codeCoverageIgnore
 	 */
 	private function __construct() {
-		$this->static_location = plugins_url( '/static/admin/', WPQ_SP_Loader::$abs_file );
-		$this->lib_location = plugins_url( '/static/lib/', WPQ_SP_Loader::$abs_file );
+		$this->static_location = plugins_url( '/static/admin/', WPQ_WP_Update_Loader::$abs_file );
+		$this->lib_location = plugins_url( '/static/lib/', WPQ_WP_Update_Loader::$abs_file );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class WPQ_SP_Admin_UI {
 		global $wp_locale;
 
 		// Shortcuts to variables
-		$version = WPQ_SP_Loader::$version;
+		$version = WPQ_WP_Update_Loader::$version;
 		$static_location = $this->static_location;
 		$lib_location = $this->lib_location;
 
@@ -79,7 +79,7 @@ class WPQ_SP_Admin_UI {
 		wp_enqueue_style( 'wpq-sp-jquery-icon', $lib_location . '/fonts/jquery.iconfont/jquery-ui.icon-font.css', array(), $version );
 		wp_enqueue_style( 'ipt-icomoon-fonts', $lib_location . '/fonts/icomoon/icomoon.css', array(), $version );
 		wp_enqueue_style( 'ipt-plugin-uif-fip', $lib_location . '/fonticonpicker/jquery.fonticonpicker.min.css', array(), $version );
-		wp_enqueue_style( 'wpq-sp-admin-ui', $static_location . 'css/admin-ui/wpq-sp-admin-ui.css', array(), $version );
+		wp_enqueue_style( 'wpq-wp-update-admin-ui', $static_location . 'css/admin-ui/wpq-wp-update-admin-ui.css', array(), $version );
 
 		// Enqueue all scripts
 		$scripts = array(
@@ -106,18 +106,18 @@ class WPQ_SP_Admin_UI {
 			'jquery-timepicker-addon' => array( $lib_location . 'timepicker/jquery-ui-timepicker-addon.js', array( 'jquery', 'jquery-ui-datepicker' ) ),
 			'select2'                 => array( $lib_location . 'select2/select2.min.js', array( 'jquery' ) ),
 			'ipt-plugin-uif-fip-js'   => array( $lib_location . 'fonticonpicker/jquery.fonticonpicker.min.js', array( 'jquery' ) ),
-			'wpq-sp-admin-js'      => array( $static_location . 'js/jquery.wpq-sp-admin-ui.min.js', array() ),
+			'wpq-sp-admin-js'      => array( $static_location . 'js/jquery.wpq-wp-update.min.js', array() ),
 		);
 
 		// Localization
 
 		$datetime_l10n = array(
-			'closeText'         => __( 'Done', 'wpq-sp' ),
-			'currentText'       => __( 'Today', 'wpq-sp' ),
-			'tcurrentText' => __( 'Now', 'wpq-sp' ),
+			'closeText'         => __( 'Done', 'wpq-wp-update' ),
+			'currentText'       => __( 'Today', 'wpq-wp-update' ),
+			'tcurrentText' => __( 'Now', 'wpq-wp-update' ),
 			'monthNames'        => array_values( $wp_locale->month ),
 			'monthNamesShort'   => array_values( $wp_locale->month_abbrev ),
-			'monthStatus'       => __( 'Show a different month', 'wpq-sp' ),
+			'monthStatus'       => __( 'Show a different month', 'wpq-wp-update' ),
 			'dayNames'          => array_values( $wp_locale->weekday ),
 			'dayNamesShort'     => array_values( $wp_locale->weekday_abbrev ),
 			'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
@@ -126,19 +126,19 @@ class WPQ_SP_Admin_UI {
 			// is Right to left language? default is false
 			'isRTL'             => $wp_locale->is_rtl(),
 			/* translators: A is for AM */
-			'amNames' => array( _x( 'AM', 'timeMeridiem', 'wpq-sp' ), _x( 'A', 'timeMeridiem', 'wpq-sp' ) ),
+			'amNames' => array( _x( 'AM', 'timeMeridiem', 'wpq-wp-update' ), _x( 'A', 'timeMeridiem', 'wpq-wp-update' ) ),
 			/* translators: P is for PM */
-			'pmNames' => array( _x( 'PM', 'timeMeridiem', 'wpq-sp' ), _x( 'P', 'timeMeridiem', 'wpq-sp' ) ),
+			'pmNames' => array( _x( 'PM', 'timeMeridiem', 'wpq-wp-update' ), _x( 'P', 'timeMeridiem', 'wpq-wp-update' ) ),
 			/* translators: Change %s to the time suffix. %s is always replaced by an empty string */
-			'timeSuffix' => sprintf( _x( '%s', 'timeSuffix', 'wpq-sp' ), '' ),
-			'timeOnlyTitle' => __( 'Choose Time', 'wpq-sp' ),
-			'timeText' => __( 'Time', 'wpq-sp' ),
-			'hourText' => __( 'Hour', 'wpq-sp' ),
-			'minuteText' => __( 'Minute', 'wpq-sp' ),
-			'secondText' => __( 'Second', 'wpq-sp' ),
-			'millisecText' => __( 'Millisecond', 'wpq-sp' ),
-			'microsecText' => __( 'Microsecond', 'wpq-sp' ),
-			'timezoneText' => __( 'Timezone', 'wpq-sp' ),
+			'timeSuffix' => sprintf( _x( '%s', 'timeSuffix', 'wpq-wp-update' ), '' ),
+			'timeOnlyTitle' => __( 'Choose Time', 'wpq-wp-update' ),
+			'timeText' => __( 'Time', 'wpq-wp-update' ),
+			'hourText' => __( 'Hour', 'wpq-wp-update' ),
+			'minuteText' => __( 'Minute', 'wpq-wp-update' ),
+			'secondText' => __( 'Second', 'wpq-wp-update' ),
+			'millisecText' => __( 'Millisecond', 'wpq-wp-update' ),
+			'microsecText' => __( 'Microsecond', 'wpq-wp-update' ),
+			'timezoneText' => __( 'Timezone', 'wpq-wp-update' ),
 		);
 		$scripts_localize = array(
 			'jquery-timepicker-addon' => array(
@@ -149,12 +149,12 @@ class WPQ_SP_Admin_UI {
 				'object_name' => 'initWPQSPUI',
 				'l10n' => array(
 					'L10n' => array(
-						'ajax_loader' => __( 'Please Wait', 'wpq-sp' ),
-						'delete_title' => __( 'Confirm Deletion', 'wpq-sp' ),
-						'delete_msg' => __( '<p>Are you sure you want to delete?</p><p>The action can not be undone</p>', 'wpq-sp' ),
-						'got_it' => __( 'Got it', 'wpq-sp' ),
-						'help' => __( 'Help!', 'wpq-sp' ),
-						'dismiss' => __( 'Dismiss', 'wpq-sp' ),
+						'ajax_loader' => __( 'Please Wait', 'wpq-wp-update' ),
+						'delete_title' => __( 'Confirm Deletion', 'wpq-wp-update' ),
+						'delete_msg' => __( '<p>Are you sure you want to delete?</p><p>The action can not be undone</p>', 'wpq-wp-update' ),
+						'got_it' => __( 'Got it', 'wpq-wp-update' ),
+						'help' => __( 'Help!', 'wpq-wp-update' ),
+						'dismiss' => __( 'Dismiss', 'wpq-wp-update' ),
 					),
 				),
 			),
@@ -191,10 +191,10 @@ class WPQ_SP_Admin_UI {
 		}
 
 		// Enqueue vue.js
-		wp_enqueue_script( 'vuejs', plugins_url( '/static/lib/vuejs/vue.' . ( ! $dev ? 'min.' : '' ) . 'js', WPQ_SP_Loader::$abs_file ), array(), '2.3.0', true );
+		wp_enqueue_script( 'vuejs', plugins_url( '/static/lib/vuejs/vue.' . ( ! $dev ? 'min.' : '' ) . 'js', WPQ_WP_Update_Loader::$abs_file ), array(), '2.3.0', true );
 		// Enqueue vuex.js
 		if ( $vuex ) {
-			wp_enqueue_script( 'vuexjs', plugins_url( '/static/lib/vuejs/vuex/vuex.' . ( ! $dev ? 'min.' : '' ) . 'js', WPQ_SP_Loader::$abs_file ), array( 'vuejs' ), '2.3.0', true );
+			wp_enqueue_script( 'vuexjs', plugins_url( '/static/lib/vuejs/vuex/vuex.' . ( ! $dev ? 'min.' : '' ) . 'js', WPQ_WP_Update_Loader::$abs_file ), array( 'vuejs' ), '2.3.0', true );
 		}
 	}
 
@@ -247,7 +247,7 @@ class WPQ_SP_Admin_UI {
 		<?php
 		if ( ! $this->check_callback( $tab['callback'] ) ) {
 			$tab['callback'] = array(
-				array( $this, 'msg_error' ), array( __( 'Invalid Callback', 'wpq-sp' ) ),
+				array( $this, 'msg_error' ), array( __( 'Invalid Callback', 'wpq-wp-update' ) ),
 			);
 		}
 
@@ -492,9 +492,9 @@ class WPQ_SP_Admin_UI {
 	 * @codeCoverageIgnore
 	 */
 	public function upload( $name, $value, $title_name = '', $width = '', $height = '', $background_size = '' ) {
-		$label = __( 'Upload', 'wpq-sp' );
-		$title = __( 'Choose Image', 'wpq-sp' );
-		$select = __( 'Use Image', 'wpq-sp' );
+		$label = __( 'Upload', 'wpq-wp-update' );
+		$title = __( 'Choose Image', 'wpq-wp-update' );
+		$select = __( 'Use Image', 'wpq-wp-update' );
 		$data = array(
 			'title' => $title,
 			'select' => $select,
@@ -631,7 +631,7 @@ class WPQ_SP_Admin_UI {
 		$items = array();
 		for ( $i = 1; $i <= 6; $i++ ) {
 			$items[] = array(
-				'label' => sprintf( _x( 'Heading %1$d', 'wpq-sp-ui-heading', 'wpq-sp' ), $i ),
+				'label' => sprintf( _x( 'Heading %1$d', 'wpq-sp-ui-heading', 'wpq-wp-update' ), $i ),
 				'value' => 'h' . $i,
 			);
 		}
@@ -663,13 +663,13 @@ class WPQ_SP_Admin_UI {
 			for( $i = 1; $i <= 4; $i++ ) {
 				$layouts[] = array(
 					'value' => (string) $i,
-					'label' => '<span title="' . sprintf( _nx( '%d Column', '%d Columns', $i, 'ui-admin-layout', 'wpq-sp' ), $i ) . '"><img src="' . $this->static_location . 'images/layout-' . $i . '.svg" /></span>',
+					'label' => '<span title="' . sprintf( _nx( '%d Column', '%d Columns', $i, 'ui-admin-layout', 'wpq-wp-update' ), $i ) . '"><img src="' . $this->static_location . 'images/layout-' . $i . '.svg" /></span>',
 				);
 			}
 			// Automatic columns
 			$layouts[] = array(
 				'value' => 'random',
-				'label' => '<span title="' . __( 'Automatic Columns', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/layout-random.svg" /></span>',
+				'label' => '<span title="' . __( 'Automatic Columns', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/layout-random.svg" /></span>',
 			);
 		}
 		// Merge additionals
@@ -705,42 +705,42 @@ class WPQ_SP_Admin_UI {
 			// Left
 			$positions[] = array(
 				'value' => 'left',
-				'label' => '<span title="' . __( 'Left', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-left.svg" /></span>',
+				'label' => '<span title="' . __( 'Left', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-left.svg" /></span>',
 			);
 			// Top
 			$positions[] = array(
 				'value' => 'top',
-				'label' => '<span title="' . __( 'Top', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-top.svg" /></span>',
+				'label' => '<span title="' . __( 'Top', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-top.svg" /></span>',
 			);
 			// Right
 			$positions[] = array(
 				'value' => 'right',
-				'label' => '<span title="' . __( 'Right', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-right.svg" /></span>',
+				'label' => '<span title="' . __( 'Right', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-right.svg" /></span>',
 			);
 			// Bottom
 			$positions[] = array(
 				'value' => 'bottom',
-				'label' => '<span title="' . __( 'Bottom', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-bottom.svg" /></span>',
+				'label' => '<span title="' . __( 'Bottom', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-bottom.svg" /></span>',
 			);
 			// Inline Top Left
 			$positions[] = array(
 				'value' => 'inline-top-left',
-				'label' => '<span title="' . __( 'Inline Top Left', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-inline-top-left.svg" /></span>',
+				'label' => '<span title="' . __( 'Inline Top Left', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-inline-top-left.svg" /></span>',
 			);
 			// Inline Top Right
 			$positions[] = array(
 				'value' => 'inline-top-right',
-				'label' => '<span title="' . __( 'Inline Top Right', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-inline-top-right.svg" /></span>',
+				'label' => '<span title="' . __( 'Inline Top Right', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-inline-top-right.svg" /></span>',
 			);
 			// Inline Bottom Left
 			$positions[] = array(
 				'value' => 'inline-bottom-left',
-				'label' => '<span title="' . __( 'Inline Bottom Left', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-inline-bottom-left.svg" /></span>',
+				'label' => '<span title="' . __( 'Inline Bottom Left', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-inline-bottom-left.svg" /></span>',
 			);
 			// Inline Bottom Right
 			$positions[] = array(
 				'value' => 'inline-bottom-right',
-				'label' => '<span title="' . __( 'Inline Bottom Right', 'wpq-sp' ) . '"><img src="' . $this->static_location . 'images/position-inline-bottom-right.svg" /></span>',
+				'label' => '<span title="' . __( 'Inline Bottom Right', 'wpq-wp-update' ) . '"><img src="' . $this->static_location . 'images/position-inline-bottom-right.svg" /></span>',
 			);
 		}
 		// Add additionals
@@ -764,10 +764,10 @@ class WPQ_SP_Admin_UI {
 	 */
 	public function alignment_select( $name, $selected ) {
 		$items = array(
-			'left' => __( 'Align Left', 'wpq-sp' ),
-			'center' => __( 'Align Center', 'wpq-sp' ),
-			'right' => __( 'Align Right', 'wpq-sp' ),
-			'justify' => __( 'Align Justify', 'wpq-sp' ),
+			'left' => __( 'Align Left', 'wpq-wp-update' ),
+			'center' => __( 'Align Center', 'wpq-wp-update' ),
+			'right' => __( 'Align Right', 'wpq-wp-update' ),
+			'justify' => __( 'Align Justify', 'wpq-wp-update' ),
 		);
 		$alignments = array();
 		foreach ( $items as $key => $val ) {
@@ -808,7 +808,7 @@ class WPQ_SP_Admin_UI {
 		echo '<div class="ipt_uif_font_selector">';
 
 		$this->select( $name, $items, $selected );
-		echo '<span data-label="' . __( 'Preview', 'wpq-sp' ) . '" class="ipt_uif_font_preview">Grumpy <strong>wizards</strong> <em>make</em> <strong><em>toxic brew</em></strong> for the evil Queen and Jack.</span>';
+		echo '<span data-label="' . __( 'Preview', 'wpq-wp-update' ) . '" class="ipt_uif_font_preview">Grumpy <strong>wizards</strong> <em>make</em> <strong><em>toxic brew</em></strong> for the evil Queen and Jack.</span>';
 
 		echo '</div>';
 	}
@@ -1499,7 +1499,7 @@ class WPQ_SP_Admin_UI {
 			} elseif ( $this->check_callback( $callback ) ) {
 				call_user_func_array( $callback[0], $callback[1] );
 			} else {
-				$this->msg_error( __( 'Invalid Callback', 'wpq-sp' ) );
+				$this->msg_error( __( 'Invalid Callback', 'wpq-wp-update' ) );
 			}
 			echo '</td>';
 
@@ -1577,7 +1577,7 @@ class WPQ_SP_Admin_UI {
 	 * @codeCoverageIgnore
 	 */
 	private function print_message( $style, $msg = '', $echo = true ) {
-		$output = '<div class="ipt_uif_message ' . $style . '"><a href="javascript:;" class="ipt_uif_message_dismiss" title="' . __( 'Dismiss', 'wpq-sp' ) . '">&times;</a><p>' . $msg . '</p></div>';
+		$output = '<div class="ipt_uif_message ' . $style . '"><a href="javascript:;" class="ipt_uif_message_dismiss" title="' . __( 'Dismiss', 'wpq-wp-update' ) . '">&times;</a><p>' . $msg . '</p></div>';
 		if ( $echo ) {
 			echo $output;
 		}
@@ -1641,7 +1641,7 @@ class WPQ_SP_Admin_UI {
 		}
 		$data_attr = $this->convert_data_attributes( $labels );
 		if ( $default === null ) {
-			$default = __( 'Loading', 'wpq-sp' );
+			$default = __( 'Loading', 'wpq-wp-update' );
 		}
 ?>
 <div class="<?php echo implode( ' ', $classes ); ?>"<?php echo $id_attr . $style_attr . $data_attr; ?>>
@@ -1722,7 +1722,7 @@ class WPQ_SP_Admin_UI {
 	public function collapsible( $label, $callback, $open = false ) {
 		$this->collapsible_head( $label, $open );
 		if ( ! $this->check_callback( $callback ) ) {
-			$this->msg_error( __( 'Invalid callback', 'wpq-sp' ) );
+			$this->msg_error( __( 'Invalid callback', 'wpq-wp-update' ) );
 		} else {
 			call_user_func_array( $callback[0], $callback[1] );
 		}
@@ -1795,7 +1795,7 @@ class WPQ_SP_Admin_UI {
 	 */
 	public function iconbox( $label, $callback, $icon = 'info2', $scroll = 0, $id = '', $head_button = array(), $classes = array() ) {
 		if ( ! $this->check_callback( $callback ) ) {
-			$this->msg_error( __( 'Invalid Callback supplied', 'wpq-sp' ) );
+			$this->msg_error( __( 'Invalid Callback supplied', 'wpq-wp-update' ) );
 			return;
 		}
 
@@ -1883,7 +1883,7 @@ class WPQ_SP_Admin_UI {
 	 */
 	public function div( $styles, $callback, $scroll = 0, $id = '', $classes = array() ) {
 		if ( ! $this->check_callback( $callback ) ) {
-			$this->msg_error( __( 'Invalid Callback supplied', 'wpq-sp' ) );
+			$this->msg_error( __( 'Invalid Callback supplied', 'wpq-wp-update' ) );
 			return;
 		}
 		if ( ! is_array( $classes ) ) {
