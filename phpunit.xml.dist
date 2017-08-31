@@ -1,0 +1,28 @@
+<phpunit
+	bootstrap="tests/phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="false"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+	<testsuites>
+		<testsuite>
+			<directory suffix="-test.php">./tests/phpunit/testcases/</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php" prefix="class-">./includes/</directory>
+			<file>./wpq-wp-update.php</file>
+			<exclude>
+				<directory suffix=".php">./vendor/</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+		<log type="coverage-clover" target="build/logs/phpunit/coverage.xml" showUncoveredFiles="false"/>
+		<log type="junit" target="build/logs/phpunit/testlog.xml" logIncompleteSkipped="true"/>
+	</logging>
+</phpunit>

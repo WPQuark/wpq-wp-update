@@ -1,0 +1,85 @@
+# Our base image
+image: wpquark/wptest-php-nodejs-grunt:latest
+
+# mysql service
+services:
+- mysql
+
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+
+# Our stages
+stages:
+  - test
+  - sonarqube
+
+variables:
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: wordpress_tests
+  MYSQL_ROOT_PASSWORD: mysql
+  WP_MULTISITE: "0"
+
+# We test on php7
+# default job to run on every commit, everywhere
+test:
+  stage: test
+  tags:
+    - wordpress
+  before_script:
+    # Install Composer dependencies
+    - composer install
+
+    # Check the PHP Version
+    - php -v
+
+    # Install WordPress PHPUnit Test
+    - bash bin/install-wp-tests.sh wordpress_test root mysql mysql $WP_VERSION
+  script:
+  - phpunit
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+
+# SonarQube Preview running everywhere except on master branch and schedules
+sonarqube-preview:
+  stage: sonarqube
+  cache:
+    paths:
+  tags:
+    - sonar
+  before_script:
+    # Increase sonar memory
+    - export SONAR_RUNNER_OPTS="-Xmx3072m"
+  script:
+    - /opt/sonar-scanner/bin/sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.analysis.mode=preview -Dsonar.gitlab.project_id=$CI_PROJECT_PATH -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.only_issue_from_commit_file=true -Dsonar.gitlab.only_issue_from_commit_line=true
+  dependencies:
+    - test
+  except:
+    - master
+    - schedules
+    - web
+
+# SonarQube Publish running on master of this repo and during schedules
+sonarqube-publish:
+  stage: sonarqube
+  cache:
+    paths:
+  tags:
+    - sonar
+  before_script:
+    # Increase sonar memory
+    - export SONAR_RUNNER_OPTS="-Xmx3072m"
+  script:
+  - /opt/sonar-scanner/bin/sonar-scanner -Dsonar.login=$SONAR_TOKEN
+  dependencies:
+    - test
+  environment:
+    name: sonarqube
+    url: https://cq.wpquark.io/dashboard?id=cq.wpquark%3Awpupdate
+  only:
+    - master@wpq-server/wpq-wp-update
+    - schedules
+    - web

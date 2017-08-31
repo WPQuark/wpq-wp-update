@@ -1,0 +1,13 @@
+{
+    "name": "wpquark/wpq-wp-update",
+    "description": "A private update server for WPQuark",
+    "type": "project",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Swashata Ghosh",
+            "email": "swashata@wpquark.com"
+        }
+    ],
+    "require": {}
+}
