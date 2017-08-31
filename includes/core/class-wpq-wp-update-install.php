@@ -93,6 +93,7 @@ class WPQ_WP_Update_Install {
 			domain VARCHAR(50) NOT NULL default '',
 			expire DATETIME NOT NULL default '0000-00-00 00:00:00',
 			token VARCHAR(50) NOT NULL default '',
+			slug VARCHAR(50) NOT NULL default '',
 			PRIMARY KEY  (id),
 			UNIQUE KEY token (token),
 			UNIQUE KEY purchase_code ( purchase_code ),
@@ -146,6 +147,7 @@ class WPQ_WP_Update_Install {
 			'distribution' => dirname( ABSPATH ) . '/distributions/',
 			'masterkey' => uniqid( 'wpq-wp-update-' ),
 			'envato_api' => '',
+			'product_maps' => array(),
 		);
 
 		$existing_info = get_option( 'wpq_wp_update', false );

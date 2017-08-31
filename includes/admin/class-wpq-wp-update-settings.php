@@ -67,6 +67,56 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 			'param' => array( 'wpq_wpupdate_config[masterkey]', $wpq_wp_update_config['masterkey'], __( 'Required', 'wpq-wp-update' ) ),
 			'help' => __( 'If a request is sent with this value as <code>purchase_code</code> parameter, then we skip checking envato API.', 'wpq-wp-update' ),
 		);
+		// Product Maps
+		$product_maps_columns = array(
+			0 => array(
+				'label' => __( 'Envato Item ID', 'wpq-wp-update' ),
+				'size' => '25',
+				'type' => 'spinner',
+			),
+			1 => array(
+				'label' => __( 'Directory SLUG', 'wpq-wp-update' ),
+				'size' => '75',
+				'type' => 'text',
+			),
+		);
+		$product_maps_labels = array(
+			'add' => __( 'Add New Product', 'wpq-wp-update' ),
+		);
+		$product_maps_name_prefix = 'wpq_wpupdate_config[product_maps][__SDAKEY__]';
+		$product_maps_data = array(
+			0 => array( $product_maps_name_prefix . '[item_id]', '', __( 'Required', 'wpq-wp-update' ) ),
+			1 => array( $product_maps_name_prefix . '[slug]', '', __( 'Required', 'wpq-wp-update' ) ),
+		);
+		$product_maps_items = array();
+		$product_maps_items_name_prefix = 'wpq_wpupdate_config[product_maps][%d]';
+		$max_key = null;
+		foreach ( (array) $wpq_wp_update_config['product_maps'] as $key => $val ) {
+			$product_maps_items[] = array(
+				0 => array( sprintf( $product_maps_items_name_prefix . '[item_id]', $key ), $val['item_id'], __( 'Required', 'wpq-wp-update' ) ),
+				1 => array( sprintf( $product_maps_items_name_prefix . '[slug]', $key ), $val['slug'], __( 'Required', 'wpq-wp-update' ) ),
+			);
+			$max_key = max( array( $key, $max_key ) );
+		}
+		$items[] = array(
+			'name' => '',
+			'label' => __( 'Envato Items', 'wpq-wp-update' ),
+			'ui' => 'sda_list',
+			'param' => array(
+				array(
+					'columns' => $product_maps_columns,
+					'labels' => $product_maps_labels,
+					'features' => array(
+						'draggable' => false,
+					),
+				),
+				$product_maps_items,
+				$product_maps_data,
+				$max_key,
+			),
+			'help' => __( 'Map envato items with slug. slug is the relative path to the distribution directory where we will try to find slug.zip for package.', 'wpq-wp-update' ),
+		);
+
 		$this->ui->form_table( $items );
 	}
 
@@ -127,6 +177,7 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 			'envato_api' => isset( $this->post['wpq_wpupdate_config']['envato_api'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['envato_api'] ) : '',
 			'distribution' => isset( $this->post['wpq_wpupdate_config']['distribution'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['distribution'] ) : dirname( ABSPATH ) . '/distributions/',
 			'masterkey' => isset( $this->post['wpq_wpupdate_config']['masterkey'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['masterkey'] ) : uniqid( 'wpq-wp-update-' ),
+			'product_maps' => isset( $this->post['wpq_wpupdate_config']['product_maps'] ) ? (array) $this->post['wpq_wpupdate_config']['product_maps'] : array(),
 		);
 		update_option( 'wpq_wp_update_config', $new_options );
 		// Update globals

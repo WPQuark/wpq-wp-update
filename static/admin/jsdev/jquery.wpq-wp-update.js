@@ -719,8 +719,8 @@
 							'<a href="javascript:;" class="ipt_uif_message_dismiss" title="' + initWPQSPUI.L10n.dismiss + '">&times;</a>' +
 							'<p>' + response.msg + '</p>' +
 						'</div>' );
-					if ( form.find( '.ipt_uif_button_container' ).length ) {
-						form.find( '.ipt_uif_button_container' ).after( message );
+					if ( form.find( '.ipt_uif_page_buttons' ).length ) {
+						form.find( '.ipt_uif_page_buttons' ).after( message );
 					} else {
 						that.jElement.find( '.ipt-ui-backoffice-main-wrap' ).prepend( message );
 					}
