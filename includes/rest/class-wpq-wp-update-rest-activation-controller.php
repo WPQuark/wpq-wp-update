@@ -39,7 +39,8 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 
 		// Now go fetch the record
 		$purchase_code = wp_unslash( $_REQUEST['purchase_code'] );
-		$record = $wpdb->get_row( $wpdb->prepare( "SELECT purchase_code, domain, expire FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s AND slug = %s", $purchase_code, $request['slug'] ) ); // WPCS: unprepared SQL ok.
+		$license = new WPQ_WP_Update_License( $request['slug'], wp_unslash( $_REQUEST['domain'] ), $purchase_code );
+		$record = $license->get_activation_data();
 
 		if ( ! $record ) {
 			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Purchase Code or Slug', 'wpq-wp-update' ), array(
@@ -58,48 +59,21 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 
 	private function register_activation( $slug, $item_id, $purchase_code, $domain ) {
 		global $wpdb, $wpq_wp_update;
-		// Get the item data
-		$item_data = $this->verify_purchase_code( $item_id, $purchase_code );
-		// If could not verify
-		if ( ! $item_data ) {
-			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Purchase Code', 'wpq-wp-update' ), array(
-				'status' => 401,
+		// License Utility
+		$license = new WPQ_WP_Update_License( $slug, $domain, $purchase_code );
+		// Register it
+		$result = $license->register_activation();
+		// If error
+		if ( false == $result['success'] ) {
+			$error_type = isset( $result['dberror'] ) && true == $result['dberror'] ? 'rest_error' : 'rest_forbidden';
+			$status = 'rest_error' == $error_type ? 503 : 401;
+			return new WP_Error( $error_type, esc_html( $result['error'] ), array(
+				'status' => $status,
 			) );
-		}
-		// If found, but item id does not match
-		if ( $item_id != $item_data['item_id'] ) {
-			return new WP_Error( 'rest_forbidden', esc_html__( 'Purchase Code not valid for slug', 'wpq-wp-update' ), array(
-				'status' => 401,
-			) );
-		}
-		// Item data found, so save it with a new register token
-		// First delete the existing one, if any
-		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s", $purchase_code ) ); // WPCS: unprepared SQL ok.
-		// Create a new token
-		$token = bin2hex( random_bytes( 16 ) );
-		// Prepare the insert
-		$data = array(
-			'purchase_code' => $purchase_code,
-			'domain' => $domain,
-			'expire' => $item_data['expiry'],
-			'token' => $token,
-			'slug' => $slug,
-			'license' => $item_data['license'],
-			'purchase_date' => $item_data['purchase_date'],
-			'buyer' => $item_data['buyer'],
-		);
-		$result = $wpdb->insert( $wpq_wp_update['token_table'], $data, '%s' );
-		if ( $result ) {
-			return $data;
 		} else {
-			return new WP_Error( 'rest_error', esc_html__( 'Something went wrong, please try again.', 'wpq-wp-update' ), array(
-				'status' => 503,
-			) );
+			// All good
+			return $result['data'];
 		}
-	}
-
-	private function verify_purchase_code( $item_id, $purchase_code ) {
-		return WPQ_WP_Update_Helpers::get_purchase_data( $item_id, $purchase_code );
 	}
 
 	public function check_permission( $request ) {

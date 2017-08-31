@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a1d738843d03f5a1f94cceb44aabdaf",
+    "content-hash": "9350eb1141475d1b8870becfe08bfb98",
     "packages": [
         {
             "name": "tcdent/php-restclient",
@@ -60,16 +60,16 @@
         },
         {
             "name": "yahnis-elsts/wp-update-server",
-            "version": "v1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/YahnisElsts/wp-update-server.git",
-                "reference": "fa70d438945120d030bcfd368ba70e9ad75704bb"
+                "reference": "9c8f98e19fb0fec29dd4e920fe86ee1480198eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/wp-update-server/zipball/fa70d438945120d030bcfd368ba70e9ad75704bb",
-                "reference": "fa70d438945120d030bcfd368ba70e9ad75704bb",
+                "url": "https://api.github.com/repos/YahnisElsts/wp-update-server/zipball/9c8f98e19fb0fec29dd4e920fe86ee1480198eba",
+                "reference": "9c8f98e19fb0fec29dd4e920fe86ee1480198eba",
                 "shasum": ""
             },
             "require": {
@@ -96,13 +96,15 @@
                 "theme updates",
                 "wordpress"
             ],
-            "time": "2016-08-24T14:18:50+00:00"
+            "time": "2017-06-21T08:46:18+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "yahnis-elsts/wp-update-server": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

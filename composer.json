@@ -10,10 +10,11 @@
         }
     ],
     "require": {
-        "yahnis-elsts/wp-update-server": "^1.2",
+        "yahnis-elsts/wp-update-server": "dev-master#9c8f98e19fb0fec29dd4e920fe86ee1480198eba",
         "tcdent/php-restclient": "^0.1.6"
     },
     "autoload": {
     	"classmap": [ "includes/" ]
-    }
+    },
+    "minimum-stability": "dev"
 }
