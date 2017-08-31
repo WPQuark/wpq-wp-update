@@ -80,6 +80,7 @@ class WPQ_WP_Update_Install {
 			wpversion VARCHAR(10) NOT NULL default '',
 			site_url VARCHAR(255) NOT NULL default '',
 			query_string VARCHAR(255) NOT NULL default '',
+			method VARCHAR(10) NOT NULL default 'GET',
 			PRIMARY KEY  (id),
 			KEY action ( action ),
 			KEY accesstime ( accesstime ),

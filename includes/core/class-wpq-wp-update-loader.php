@@ -110,6 +110,9 @@ class WPQ_WP_Update_Loader {
 
 		// Register rest
 		add_action( 'rest_api_init', array( $this, 'rest_init' ) );
+
+		// Load our custom handler
+		new WPQ_WP_Update_Handler();
 	}
 
 	public static function init_globals() {

@@ -19,6 +19,7 @@ class WPQ_WP_Update_License {
 		$this->token = $token;
 		$this->purchase_code = $purchase_code;
 		$this->domain = $domain;
+		WPQ_WP_Update_Loader::init_globals();
 	}
 
 	public function get_activation_data() {
@@ -82,5 +83,13 @@ class WPQ_WP_Update_License {
 				'error' => __( 'Something went wrong, please try again.', 'wpq-wp-update' ),
 			);
 		}
+	}
+
+	public function validation_token() {
+		global $wpdb, $wpq_wp_update;
+		if ( $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$wpq_wp_update['token_table']} WHERE token = %s AND domain = %s", $this->token, $this->domain ) ) ) {
+			return true;
+		}
+		return false;
 	}
 }

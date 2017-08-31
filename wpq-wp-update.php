@@ -34,6 +34,8 @@ define( 'WPQ_WPUPDATE_ABSPATH', trailingslashit( dirname( __FILE__ ) ) );
 
 // Include composer
 require_once WPQ_WPUPDATE_ABSPATH . 'vendor/autoload.php';
+// Manually include the UpdateServer
+require_once WPQ_WPUPDATE_ABSPATH . 'vendor/yahnis-elsts/wp-update-server/loader.php';
 
 global $wpq_wp_update_load;
 $wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.0.7' );
