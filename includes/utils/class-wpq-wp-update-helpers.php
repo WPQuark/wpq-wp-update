@@ -33,28 +33,45 @@ class WPQ_WP_Update_Helpers {
 			return array(
 				'item_id' => $item_id,
 				'expiry' => date( 'Y-m-d H:i:s', strtotime( '+100 years' ) ),
+				'buyer' => 'master',
+				'license' => 'perpetual',
+				'purchase_date' => current_time( 'mysql' ),
 			);
 		}
-		// Now we need to check with the server
-		$url = 'https://api.envato.com/v3/market/author/sale?code=' . urlencode( $purchase_code );
-		$response = \Httpful\Request::get( $url )
-			->expectsJson()
-			->addHeaders( array(
-				'Authorization'  => 'Bearer ' . $wpq_wp_update_config['envato_api'],
-			) )
-			->send();
 
+		// Get the response from the envato API
+		$result = self::get_envato_restclient()
+			->get( 'author/sale', array(
+				'code' => $purchase_code,
+			) );
 		// Check
-		if ( $response && is_object( $response ) && isset( $response->body->purchase_count ) ) {
-			return array(
-				'item_id' => $response->body->item->id,
-				'expiry' => date( 'Y-m-d H:i:s', strtotime( $response->body->supported_until ) ),
-				'buyer' => $response->body->buyer,
-				'license' => $response->body->license,
-				'purchase_date' => $response->body->sold_at,
-			);
+		if ( 200 == $result->info->http_code ) {
+			$response = $result->decode_response();
+			if ( $response && is_object( $response ) && isset( $response->purchase_count ) ) {
+				return array(
+					'item_id' => $response->item->id,
+					'expiry' => date( 'Y-m-d H:i:s', strtotime( $response->supported_until ) ),
+					'buyer' => $response->buyer,
+					'license' => $response->license,
+					'purchase_date' => date( 'Y-m-d H:i:s', strtotime( $response->sold_at ) ),
+				);
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
+	}
+
+	public static function get_envato_restclient( $base_url = 'https://api.envato.com/v3/market' ) {
+		global $wpq_wp_update_config;
+		$api = new RestClient( array(
+			'base_url' => $base_url,
+			'format' => 'json',
+			'headers' => array(
+				'Authorization'  => 'Bearer ' . $wpq_wp_update_config['envato_api'],
+			),
+		) );
+		return $api;
 	}
 }

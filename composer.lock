@@ -4,34 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bbf78990ca8524e20fdcd24a64d8316",
+    "content-hash": "4a1d738843d03f5a1f94cceb44aabdaf",
     "packages": [
         {
-            "name": "nategood/httpful",
-            "version": "0.2.20",
+            "name": "tcdent/php-restclient",
+            "version": "0.1.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nategood/httpful.git",
-                "reference": "c1cd4d46a4b281229032cf39d4dd852f9887c0f6"
+                "url": "https://github.com/tcdent/php-restclient.git",
+                "reference": "59a464a76dee3ef7cd390360659c8552f36d054f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nategood/httpful/zipball/c1cd4d46a4b281229032cf39d4dd852f9887c0f6",
-                "reference": "c1cd4d46a4b281229032cf39d4dd852f9887c0f6",
+                "url": "https://api.github.com/repos/tcdent/php-restclient/zipball/59a464a76dee3ef7cd390360659c8552f36d054f",
+                "reference": "59a464a76dee3ef7cd390360659c8552f36d054f",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=5.3"
+                "ext-json": "*",
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "php": ">=5.5.7",
+                "phpunit/phpunit": ">=4.5"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Httpful": "src/"
-                }
+                "files": [
+                    "restclient.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39,22 +41,22 @@
             ],
             "authors": [
                 {
-                    "name": "Nate Good",
-                    "email": "me@nategood.com",
-                    "homepage": "http://nategood.com"
+                    "name": "Travis Dent",
+                    "email": "tcdent@gmail.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "A Readable, Chainable, REST friendly, PHP HTTP Client",
-            "homepage": "http://github.com/nategood/httpful",
+            "description": "A generic REST API client for PHP",
+            "homepage": "http://github.com/tcdent/php-restclient",
             "keywords": [
                 "api",
+                "client",
                 "curl",
-                "http",
-                "requests",
+                "json",
                 "rest",
-                "restful"
+                "xml"
             ],
-            "time": "2015-10-26T16:11:30+00:00"
+            "time": "2017-03-16T16:21:44+00:00"
         },
         {
             "name": "yahnis-elsts/wp-update-server",

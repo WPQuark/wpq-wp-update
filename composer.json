@@ -11,7 +11,7 @@
     ],
     "require": {
         "yahnis-elsts/wp-update-server": "^1.2",
-        "nategood/httpful": "^0.2.20"
+        "tcdent/php-restclient": "^0.1.6"
     },
     "autoload": {
     	"classmap": [ "includes/" ]

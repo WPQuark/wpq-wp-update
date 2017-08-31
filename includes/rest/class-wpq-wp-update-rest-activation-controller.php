@@ -53,7 +53,49 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 	public function set_activation( $request ) {
 		$purchase_code = wp_unslash( $_REQUEST['purchase_code'] );
 		$item_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
-		return rest_ensure_response( $this->verify_purchase_code( $item_id, $purchase_code ) );
+		return rest_ensure_response( $this->register_activation( $request['slug'], $item_id, $purchase_code, $_REQUEST['domain'] ) );
+	}
+
+	private function register_activation( $slug, $item_id, $purchase_code, $domain ) {
+		global $wpdb, $wpq_wp_update;
+		// Get the item data
+		$item_data = $this->verify_purchase_code( $item_id, $purchase_code );
+		// If could not verify
+		if ( ! $item_data ) {
+			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Purchase Code', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		// If found, but item id does not match
+		if ( $item_id != $item_data['item_id'] ) {
+			return new WP_Error( 'rest_forbidden', esc_html__( 'Purchase Code not valid for slug', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		// Item data found, so save it with a new register token
+		// First delete the existing one, if any
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s", $purchase_code ) ); // WPCS: unprepared SQL ok.
+		// Create a new token
+		$token = bin2hex( random_bytes( 16 ) );
+		// Prepare the insert
+		$data = array(
+			'purchase_code' => $purchase_code,
+			'domain' => $domain,
+			'expire' => $item_data['expiry'],
+			'token' => $token,
+			'slug' => $slug,
+			'license' => $item_data['license'],
+			'purchase_date' => $item_data['purchase_date'],
+			'buyer' => $item_data['buyer'],
+		);
+		$result = $wpdb->insert( $wpq_wp_update['token_table'], $data, '%s' );
+		if ( $result ) {
+			return $data;
+		} else {
+			return new WP_Error( 'rest_error', esc_html__( 'Something went wrong, please try again.', 'wpq-wp-update' ), array(
+				'status' => 503,
+			) );
+		}
 	}
 
 	private function verify_purchase_code( $item_id, $purchase_code ) {
@@ -63,8 +105,14 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 	public function check_permission( $request ) {
 		global $wpdb, $wpq_wp_update, $wpq_wp_update_config;
 		// Check the slug
-		if ( ! isset( $request['slug'] ) || empty( $request['slug'] ) || ! isset( $_REQUEST['purchase_code'] ) ) {
+		if ( ! isset( $request['slug'] ) || empty( $request['slug'] ) ) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'No slug specified', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		// Check purchase code
+		if ( ! isset( $_REQUEST['purchase_code'] ) ) {
+			return new WP_Error( 'rest_forbidden', esc_html__( 'No purchase code specified', 'wpq-wp-update' ), array(
 				'status' => 400,
 			) );
 		}
@@ -72,6 +120,12 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 		$envato_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
 		if ( false === $envato_id ) {
 			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Slug', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		// See if domain is present
+		if ( ! isset( $_REQUEST['domain'] ) ) {
+			return new WP_Error( 'rest_invalid_param', esc_html__( 'Domain Not Present', 'wpq-wp-update' ), array(
 				'status' => 400,
 			) );
 		}
