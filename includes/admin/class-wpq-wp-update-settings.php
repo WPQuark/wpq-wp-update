@@ -184,13 +184,19 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 		$new_options = array(
 			'envato_user' => isset( $this->post['wpq_wpupdate_config']['envato_user'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['envato_user'] ) : '',
 			'envato_api' => isset( $this->post['wpq_wpupdate_config']['envato_api'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['envato_api'] ) : '',
-			'distribution' => isset( $this->post['wpq_wpupdate_config']['distribution'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['distribution'] ) : dirname( ABSPATH ) . '/distributions/',
+			'distribution' => isset( $this->post['wpq_wpupdate_config']['distribution'] ) ? strip_tags( rtrim( $this->post['wpq_wpupdate_config']['distribution'], '/' ) ) : dirname( ABSPATH ) . '/distributions',
 			'masterkey' => isset( $this->post['wpq_wpupdate_config']['masterkey'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['masterkey'] ) : uniqid( 'wpq-wp-update-' ),
 			'product_maps' => isset( $this->post['wpq_wpupdate_config']['product_maps'] ) ? (array) $this->post['wpq_wpupdate_config']['product_maps'] : array(),
 		);
 		update_option( 'wpq_wp_update_config', $new_options );
 		// Update globals
 		$wpq_wp_update_load->init_globals();
+		// Create the directories if not present
+		$distribution = trailingslashit( $new_options['distribution'] );
+		wp_mkdir_p( $distribution . 'cache' );
+		wp_mkdir_p( $distribution . 'logs' );
+		wp_mkdir_p( $distribution . 'banners' );
+		wp_mkdir_p( $distribution . 'packages' );
 		return true;
 	}
 }

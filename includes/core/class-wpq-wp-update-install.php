@@ -148,7 +148,7 @@ class WPQ_WP_Update_Install {
 			'version' => WPQ_WP_Update_Loader::$version,
 		);
 		$config = array(
-			'distribution' => dirname( ABSPATH ) . '/distributions/',
+			'distribution' => dirname( ABSPATH ) . '/distributions',
 			'masterkey' => uniqid( 'wpq-wp-update-' ),
 			'envato_api' => '',
 			'envato_user' => '',
