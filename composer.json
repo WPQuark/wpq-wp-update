@@ -9,5 +9,11 @@
             "email": "swashata@wpquark.com"
         }
     ],
-    "require": {}
+    "require": {
+        "yahnis-elsts/wp-update-server": "^1.2",
+        "nategood/httpful": "^0.2.20"
+    },
+    "autoload": {
+    	"classmap": [ "includes/" ]
+    }
 }

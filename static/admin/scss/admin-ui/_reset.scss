@@ -1,0 +1,99 @@
+// ==========================================================================
+// eForm Admin UI Reseter
+// ==========================================================================
+// Reset box sizing
+.#{$selector} {
+	// Box sizing
+	@include material__sizing();
+	* {
+		@include material__sizing();
+	}
+
+	// But not for core WP UI
+	.tablenav,
+	.wp-core-ui,
+	.wp-picker-container {
+		@include material__sizing( content-box );
+		* {
+			@include material__sizing( content-box );
+		}
+	}
+	.wp-editor-area {
+		@include material__sizing();
+	}
+
+
+	label {
+		font-weight: normal;
+	}
+
+	[class^="ipt-icomoon-"],
+	[class*=" ipt-icomoon-"],
+	[data-ipt-icomoon] {
+		line-height: inherit;
+	}
+
+	.clear {
+		display: table;
+		clear: both;
+		&-both,
+		&-left,
+		&-right {
+			display: table;
+			clear: both;
+		}
+		&-left {
+			clear: left;
+		}
+		&-right {
+			clear: right;
+		}
+	}
+
+	.icon32 {
+	    display: block;
+	    float: left;
+	    margin: 9px 7px 0 0;
+	    height: 32px;
+	    width: 32px;
+	    span:before {
+			font-size: 32px;
+			line-height: 32px;
+			color: #464646;
+		}
+
+		+ h1 {
+			line-height: 32px;
+			font-size: 23px;
+			margin: 0 0 10px 0;
+		}
+	}
+
+	.inline-dash {
+
+	}
+
+	a {
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.form-table td .notice p, .notice p, .notice-title, div.error p, div.updated p {
+		margin: .5em 0;
+	}
+
+	.ipt_uif_ui_hidden_init {
+		visibility: hidden;
+	}
+
+	// == Core Rewrite
+	input[type=radio],
+	input[type=checkbox] {
+		&:checked:before {
+			display: none;
+		}
+	}
+}
+
+

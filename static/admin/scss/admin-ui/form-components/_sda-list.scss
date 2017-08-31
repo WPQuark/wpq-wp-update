@@ -1,0 +1,447 @@
+// ==========================================================================
+// SDA Listing
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_sda {
+		padding: 0;
+		.ipt_uif_sda_body {
+			padding: 0;
+			position: relative;
+			font-size: 12px;
+			&.eform-sda-has-toolbar {
+				.ipt_uif_sda_elem {
+					padding: 24px 7px 0;
+				}
+			}
+		}
+
+		&.ipt-uif-sda-empty {
+			.ipt_uif_sda_body {
+				&::before {
+					content: attr( data-buttontext );
+					display: block;
+					padding: 14px;
+					color: $disabled-color-text;
+					border: 1px solid $divider-color;
+					margin: 7px 0;
+					text-align: center;
+				}
+			}
+		}
+
+		&.eform-sda-reached-min {
+			.ipt_uif_sda_elem .ipt-eform-sda-toolbar .ipt_uif_sda_del {
+				background-color: $disabled-color;
+				color: $disabled-color-text;
+				opacity: 0.7;
+				cursor: not-allowed;
+				&:hover,
+				&:active {
+					background-color: $disabled-color;
+					color: $disabled-color-text;
+				}
+			}
+		}
+	}
+
+	.ipt_uif_sda_elem {
+		padding: 5px 7px 0;
+		position: relative;
+		border: 1px solid $preset-button-container;
+		margin: 10px 0;
+
+		.ipt_uif_sda_elem {
+			border-color: $divider-color;
+			border-radius: 2px;
+		}
+
+		input.ipt_uif_text,
+		textarea.ipt_uif_textarea,
+		select.ipt_uif_select,
+		input.ipt_uif_uispinner {
+			max-width: 100%;
+			width: 100%;
+			font-size: inherit;
+		}
+		label {
+			display: block;
+			margin: 5px 0 -2px 0;
+			font-weight: 400;
+			font-size: 11px;
+		}
+
+		.ipt-eform-sda-toolbar {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			width: auto;
+			height: 24px;
+			background-color: $preset-button-container;
+			color: $preset-button-container-color;
+			text-align: center;
+
+			.ipt_uif_sda_drag,
+			.ipt_uif_sda_del {
+				display: inline-block;
+				float: left;
+				font-size: 14px;
+				line-height: 24px;
+				height: 24px;
+				width: 24px;
+				text-align: center;
+				color: $preset-button-container-color;
+				will-change: background-color, color;
+				@include material__smooth-tran( 200ms, all );
+				cursor: move;
+				background-color: transparent;
+
+				&:hover {
+					background-color: $primary-color;
+					color: $primary-color-text;
+				}
+			}
+			.ipt_uif_sda_del {
+				cursor: pointer;
+				float: right;
+
+				i {
+					position: relative;
+					top: -1px;
+					left: 1px;
+				}
+
+				&:hover {
+					background-color: $error-color;
+				}
+			}
+		}
+	}
+
+	.eform-sda-sortable-helper {
+		background-color: $divider-color;
+	}
+
+	.ipt_uif_sda_elem {
+		&.ui-sortable-helper {
+			background-color: fade-out( $preset-bg, 0.1 );
+			opacity: 0.8 !important;
+			@media screen and ( min-width: $screen-lg-min ) {
+				filter: blur( 1px );
+			}
+		}
+	}
+
+	.ipt_uif_sda_highlight {
+		background-color: $disabled-color;
+		border-top: 1px solid $divider-color;
+		border-bottom: 1px solid $divider-color;
+		min-height: 50px;
+		width: 100%;
+		border-radius: 2px;
+	}
+
+	/* Columns */
+	[class*=" ipt_uif_sda_column_"],
+	[class^="ipt_uif_sda_column_"] {
+		padding: 0 7px;
+		float: left;
+		margin: 0 0 7px 0;
+	}
+	.ipt_uif_sda_column_3 {
+		width: 3%;
+	}
+	.ipt_uif_sda_column_4 {
+		width: 4%;
+	}
+	.ipt_uif_sda_column_5 {
+		width: 5%;
+	}
+	.ipt_uif_sda_column_6 {
+		width: 6%;
+	}
+	.ipt_uif_sda_column_7 {
+		width: 7%;
+	}
+	.ipt_uif_sda_column_8 {
+		width: 8%;
+	}
+	.ipt_uif_sda_column_9 {
+		width: 9%;
+	}
+	.ipt_uif_sda_column_10 {
+		width: 10%;
+	}
+	.ipt_uif_sda_column_11 {
+		width: 11%;
+	}
+	.ipt_uif_sda_column_12 {
+		width: 12%;
+	}
+	.ipt_uif_sda_column_13 {
+		width: 13%;
+	}
+	.ipt_uif_sda_column_14 {
+		width: 14%;
+	}
+	.ipt_uif_sda_column_15 {
+		width: 15%;
+	}
+	.ipt_uif_sda_column_16 {
+		width: 16%;
+	}
+	.ipt_uif_sda_column_17 {
+		width: 17%;
+	}
+	.ipt_uif_sda_column_18 {
+		width: 18%;
+	}
+	.ipt_uif_sda_column_19 {
+		width: 19%;
+	}
+	.ipt_uif_sda_column_20 {
+		width: 20%;
+	}
+	.ipt_uif_sda_column_21 {
+		width: 21%;
+	}
+	.ipt_uif_sda_column_22 {
+		width: 22%;
+	}
+	.ipt_uif_sda_column_23 {
+		width: 23%;
+	}
+	.ipt_uif_sda_column_24 {
+		width: 24%;
+	}
+	.ipt_uif_sda_column_25 {
+		width: 25%;
+	}
+	.ipt_uif_sda_column_26 {
+		width: 26%;
+	}
+	.ipt_uif_sda_column_27 {
+		width: 27%;
+	}
+	.ipt_uif_sda_column_28 {
+		width: 28%;
+	}
+	.ipt_uif_sda_column_29 {
+		width: 29%;
+	}
+	.ipt_uif_sda_column_30 {
+		width: 30%;
+	}
+	.ipt_uif_sda_column_31 {
+		width: 31%;
+	}
+	.ipt_uif_sda_column_32 {
+		width: 32%;
+	}
+	.ipt_uif_sda_column_33 {
+		width: 33%;
+	}
+	.ipt_uif_sda_column_34 {
+		width: 34%;
+	}
+	.ipt_uif_sda_column_35 {
+		width: 35%;
+	}
+	.ipt_uif_sda_column_36 {
+		width: 36%;
+	}
+	.ipt_uif_sda_column_37 {
+		width: 37%;
+	}
+	.ipt_uif_sda_column_38 {
+		width: 38%;
+	}
+	.ipt_uif_sda_column_39 {
+		width: 39%;
+	}
+	.ipt_uif_sda_column_40 {
+		width: 40%;
+	}
+	.ipt_uif_sda_column_41 {
+		width: 41%;
+	}
+	.ipt_uif_sda_column_42 {
+		width: 42%;
+	}
+	.ipt_uif_sda_column_43 {
+		width: 43%;
+	}
+	.ipt_uif_sda_column_44 {
+		width: 44%;
+	}
+	.ipt_uif_sda_column_45 {
+		width: 45%;
+	}
+	.ipt_uif_sda_column_46 {
+		width: 46%;
+	}
+	.ipt_uif_sda_column_47 {
+		width: 47%;
+	}
+	.ipt_uif_sda_column_48 {
+		width: 48%;
+	}
+	.ipt_uif_sda_column_49 {
+		width: 49%;
+	}
+	.ipt_uif_sda_column_50 {
+		width: 50%;
+	}
+	.ipt_uif_sda_column_51 {
+		width: 51%;
+	}
+	.ipt_uif_sda_column_52 {
+		width: 52%;
+	}
+	.ipt_uif_sda_column_53 {
+		width: 53%;
+	}
+	.ipt_uif_sda_column_54 {
+		width: 54%;
+	}
+	.ipt_uif_sda_column_55 {
+		width: 55%;
+	}
+	.ipt_uif_sda_column_56 {
+		width: 56%;
+	}
+	.ipt_uif_sda_column_57 {
+		width: 57%;
+	}
+	.ipt_uif_sda_column_58 {
+		width: 58%;
+	}
+	.ipt_uif_sda_column_59 {
+		width: 59%;
+	}
+	.ipt_uif_sda_column_60 {
+		width: 60%;
+	}
+	.ipt_uif_sda_column_61 {
+		width: 61%;
+	}
+	.ipt_uif_sda_column_62 {
+		width: 62%;
+	}
+	.ipt_uif_sda_column_63 {
+		width: 63%;
+	}
+	.ipt_uif_sda_column_64 {
+		width: 64%;
+	}
+	.ipt_uif_sda_column_65 {
+		width: 65%;
+	}
+	.ipt_uif_sda_column_66 {
+		width: 66%;
+	}
+	.ipt_uif_sda_column_67 {
+		width: 67%;
+	}
+	.ipt_uif_sda_column_68 {
+		width: 68%;
+	}
+	.ipt_uif_sda_column_69 {
+		width: 69%;
+	}
+	.ipt_uif_sda_column_70 {
+		width: 70%;
+	}
+	.ipt_uif_sda_column_71 {
+		width: 71%;
+	}
+	.ipt_uif_sda_column_72 {
+		width: 72%;
+	}
+	.ipt_uif_sda_column_73 {
+		width: 73%;
+	}
+	.ipt_uif_sda_column_74 {
+		width: 74%;
+	}
+	.ipt_uif_sda_column_75 {
+		width: 75%;
+	}
+	.ipt_uif_sda_column_76 {
+		width: 76%;
+	}
+	.ipt_uif_sda_column_77 {
+		width: 77%;
+	}
+	.ipt_uif_sda_column_78 {
+		width: 78%;
+	}
+	.ipt_uif_sda_column_79 {
+		width: 79%;
+	}
+	.ipt_uif_sda_column_80 {
+		width: 80%;
+	}
+	.ipt_uif_sda_column_81 {
+		width: 81%;
+	}
+	.ipt_uif_sda_column_82 {
+		width: 82%;
+	}
+	.ipt_uif_sda_column_83 {
+		width: 83%;
+	}
+	.ipt_uif_sda_column_84 {
+		width: 84%;
+	}
+	.ipt_uif_sda_column_85 {
+		width: 85%;
+	}
+	.ipt_uif_sda_column_86 {
+		width: 86%;
+	}
+	.ipt_uif_sda_column_87 {
+		width: 87%;
+	}
+	.ipt_uif_sda_column_88 {
+		width: 88%;
+	}
+	.ipt_uif_sda_column_89 {
+		width: 89%;
+	}
+	.ipt_uif_sda_column_90 {
+		width: 90%;
+	}
+	.ipt_uif_sda_column_91 {
+		width: 91%;
+	}
+	.ipt_uif_sda_column_92 {
+		width: 92%;
+	}
+	.ipt_uif_sda_column_93 {
+		width: 93%;
+	}
+	.ipt_uif_sda_column_94 {
+		width: 94%;
+	}
+	.ipt_uif_sda_column_95 {
+		width: 95%;
+	}
+	.ipt_uif_sda_column_96 {
+		width: 96%;
+	}
+	.ipt_uif_sda_column_97 {
+		width: 97%;
+	}
+	.ipt_uif_sda_column_98 {
+		width: 98%;
+	}
+	.ipt_uif_sda_column_99 {
+		width: 99%;
+	}
+	.ipt_uif_sda_column_100 {
+		width: 100%;
+	}
+}
+
+

@@ -9,11 +9,15 @@ services:
 cache:
   paths:
   - vendor/
+  - node_modules/
+  - bower_components/
 
 # Our stages
 stages:
   - test
   - sonarqube
+  - build
+  - deploy
 
 variables:
   # Configure mysql service (https://hub.docker.com/_/mysql/)
@@ -28,8 +32,14 @@ test:
   tags:
     - wordpress
   before_script:
-    # Install Composer dependencies
-    - composer install
+    # Install npm to get grunt and other stuff
+    - npm install
+
+    # Install all dependencies
+    - grunt install
+
+    # Create the build files (js/css) so that we can test them
+    - grunt prep
 
     # Check the PHP Version
     - php -v
@@ -37,7 +47,7 @@ test:
     # Install WordPress PHPUnit Test
     - bash bin/install-wp-tests.sh wordpress_test root mysql mysql $WP_VERSION
   script:
-  - phpunit
+  - grunt test
   artifacts:
     paths:
       - build/
@@ -83,3 +93,79 @@ sonarqube-publish:
     - master@wpq-server/wpq-wp-update
     - schedules
     - web
+
+# Now comes our actual CI
+# We work on the develop branch
+# So we test there which is covered by the test job
+
+# Now we build on merging to master
+build:
+  stage: build
+  cache:
+    paths:
+      - vendor/
+      - node_modules/
+      - bower_components/
+    policy: pull
+  tags:
+    - wordpress
+  before_script:
+    # Install npm to get grunt and other stuff
+    - npm install
+    # Install all dependencies
+    - grunt install
+  script:
+    - grunt release
+  artifacts:
+    paths:
+      - build/package
+    expire_in: 1 week
+  only:
+    - master@wpq-server/wpq-wp-update
+
+# release job on tag
+# It basically creates an installable zip file and attaches to the artifact
+deploy-distribution:
+  stage: deploy
+  cache:
+    paths:
+      - vendor/
+      - node_modules/
+      - bower_components/
+    policy: pull
+  tags:
+    - wordpress
+  variables:
+    CMD_CREATE_DIR: 'rm -rf '
+  before_script:
+    # Install npm to get grunt and other stuff
+    - npm install
+    # Install all dependencies
+    - grunt install
+
+    # Setup Environment variables to access keys & ssh agent
+    - eval $(ssh-agent -s)
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+    # Make the build package if not found, because artifacts expire
+    - '[[ ! -f build/package/wpq-wp-update.zip ]] && echo "Distribution Package not found. Making now..." && grunt release || echo "Found Distribution Package. Using from artifacts"'
+  script:
+    # Make sure we add the Staging Key so that we can SSH
+    - ssh-add <(echo "$WPQ_DISTRIBUTION_KEY")
+    # Delete and recreate the temporary directory for copying
+    - ssh -p22800 wpqdist@gliese.itg-vps.com "rm -rf ~/tmp_wpq_wp_update && mkdir -p ~/tmp_wpq_wp_update"
+    # Copy the distribution ZIP
+    - scp -P22800 build/package/wpq-wp-update.zip wpqdist@gliese.itg-vps.com:~/tmp_wpq_wp_update
+    # Unzip over the existing one
+    - ssh -p22800 wpqdist@gliese.itg-vps.com "rm -rf ~/public_html/wp-content/plugins/wpq-wp-update && unzip ~/tmp_wpq_wp_update/wpq-wp-update.zip -d ~/public_html/wp-content/plugins"
+  artifacts:
+    name: 'wpq-wp-update'
+    paths:
+      - build/package/wpq-wp-update.zip
+  environment:
+    name: production/distribution
+    url: https://dist.wpquark.io/wp-admin/
+  dependencies:
+    - build
+  only:
+    - master@wpq-server/wpq-wp-update

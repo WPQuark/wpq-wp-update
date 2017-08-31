@@ -1,0 +1,78 @@
+// ==========================================================================
+// eForm Admin UI Columns
+// ==========================================================================
+.#{$selector} {
+	/* Label Group */
+	.ipt_uif_label_group {
+		.ipt_uif_lc {
+			display: inline-block;
+			padding: 8px;
+		}
+	}
+	@media screen and ( min-width: $screen-lg-min ) {
+		/* Columns and Float */
+		.ipt_uif_left_col,
+		.ipt_uif_right_col {
+			width: 50%;
+			margin: 0;
+			padding: 0;
+			float: left;
+		}
+
+		.ipt_uif_left_col .ipt_uif_col_inner {
+			padding: 0 5px 0 0;
+		}
+		.ipt_uif_right_col .ipt_uif_col_inner {
+			padding: 0 0 0 5px;
+		}
+
+		.ipt_uif_column_small {
+			width: 25%;
+		}
+		.ipt_uif_column_medium {
+			width: 40%;
+		}
+		.ipt_uif_column_large {
+			width: 60%;
+		}
+
+		.ipt_uif_float_left {
+			float: left;
+		}
+		.ipt_uif_float_right {
+			float: right;
+		}
+
+		/* Label Columns */
+		.ipt_uif_label_group {
+			&.col-1,
+			&.col-2,
+			&.col-3,
+			&.col-4 {
+				&::after {
+					display: block;
+					clear: both;
+					content: "";
+				}
+				.ipt_uif_lc {
+					display: block;
+					width: 100%;
+					float: left;
+					clear: none;
+				}
+			}
+			@for $i from 1 through 4 {
+				&.col-#{$i} {
+					.ipt_uif_lc {
+						width: ( 100 / $i ) * 1%;
+						&:nth-child( #{$i}n + 1 ) {
+							clear: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+

@@ -1,0 +1,92 @@
+.#{$selector} {
+	/* Remove default checkbox */
+	[type="checkbox"].ipt_uif_checkbox:not(:checked),
+	[type="checkbox"].ipt_uif_checkbox:checked {
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+	}
+
+	// Checkbox Styles
+	[type="checkbox"].ipt_uif_checkbox {
+		// Text Label Style
+		+ label {
+			position: relative;
+			padding-left: 35px;
+			cursor: pointer;
+			display: inline-block;
+			height: auto;
+			min-height: 28px;
+			line-height: 28px;
+			font-size: 1em;
+			font-weight: 400;
+
+			-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+			-moz-user-select: none; /* mozilla browsers */
+			-khtml-user-select: none; /* webkit (konqueror) browsers */
+			-ms-user-select: none; /* IE10+ */
+		}
+
+		/* checkbox aspect */
+		+ label:before,
+		+ label:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 24px;
+			height: 24px;
+			z-index: 0;
+			border: 2px solid $radio-empty-color;
+			border-radius: 1px;
+			margin: 1px 4px 4px 4px;
+			transition: .2s;
+		}
+
+		+ label:after {
+			border: 0;
+			border-radius: 2px;
+			transform: scale(0);
+			font-family: 'ipt-icomoon';
+			font-family: 'ipt-icomoon';
+			font-style: normal;
+			font-variant: normal;
+			font-weight: normal;
+			-webkit-font-smoothing: antialiased;
+			color: $radio-icon-color;
+			line-height: 24px;
+			text-align: center;
+		}
+
+		&:not(:checked):disabled + label:before {
+			border: none;
+			background-color: $input-disabled-color;
+		}
+
+		// Focused styles
+		&.tabbed:focus + label:before {
+			box-shadow: 0 0 0 5px fade-out( $box-shadow-color, 0.9 );
+		}
+
+		&.tabbed:checked:focus + label:before {
+			box-shadow: 0 0 0 5px fade-out( $primary-color, 0.9 );
+		}
+	}
+
+	[type="checkbox"].ipt_uif_checkbox:checked {
+		+ label:before {
+			border-color: $primary-color;
+			background-color: $primary-color;
+		}
+
+		+ label:after {
+			content: "\e18e";
+			transform: scale(1);
+		}
+
+		&:disabled + label:before {
+			border-color: $input-disabled-color;
+			background-color: $input-disabled-solid-color;
+		}
+	}
+}

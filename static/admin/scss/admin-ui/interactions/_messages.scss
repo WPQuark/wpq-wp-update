@@ -1,0 +1,80 @@
+// ==========================================================================
+// Messages
+// ==========================================================================
+.ipt_uif_message {
+	padding: 10px 32px 10px 14px;
+	margin: 0 0 14px 0;
+	border: 1px solid $divider-color;
+	background-color: $preset-bg;
+	color: $secondary-text-color;
+	position: relative;
+	&::before {
+		position: absolute;
+		width: 4px;
+		top: -1px;
+		left: -1px;
+		bottom: -1px;
+		content: "";
+		display: block;
+		zoom: 1;
+		background-color: $primary-text-color;
+	}
+	&.error,
+	&.red {
+		&::before {
+			background-color: $error-color;
+		}
+		.prefix {
+			color: $error-color;
+		}
+	}
+
+	&.update,
+	&.yellow {
+		&::before {
+			background-color: $update-color;
+		}
+		.prefix {
+			color: $update-color;
+		}
+	}
+
+	&.green,
+	&.okay {
+		&::before {
+			background-color: $success-color;
+		}
+		.prefix {
+			color: $success-color;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ipt_uif_message_dismiss {
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		margin-top: -9px;
+		height: 18px;
+		width: 18px;
+		line-height: 18px;
+		text-decoration: none;
+		background-color: $dismiss-bg;
+		color: $dismiss-color;
+		padding: 0;
+		text-align: center;
+		border-radius: 100%;
+		border: 1px solid $dismiss-border;
+		@include material__smooth-tran( 300ms, background-color );
+		will-change: background-color;
+		&:hover {
+			background-color: $dismiss-hover;
+		}
+	}
+}
+
+

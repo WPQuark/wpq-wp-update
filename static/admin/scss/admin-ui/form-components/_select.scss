@@ -1,0 +1,22 @@
+// ==========================================================================
+// eForm Admin UI Select
+// ==========================================================================
+.#{$selector} {
+	select.ipt_uif_select {
+	  background-color: $select-background;
+	  width: 300px;
+	  max-width: 100%;
+	  box-shadow: none;
+	  &.fit {
+	  	width: 600px;
+	  }
+	  padding: $select-padding;
+	  border: $select-border;
+	  border-radius: $select-radius;
+	  height: $input-height;
+
+	  &[multiple] {
+	  	height: ( $input-height * 3 );
+	  }
+	}
+}

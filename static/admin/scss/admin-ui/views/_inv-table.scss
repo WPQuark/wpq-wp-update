@@ -1,0 +1,45 @@
+// ==========================================================================
+// Inventory Table View
+// ==========================================================================
+// == Color Scheme
+$inv-table-border: 1px solid color( 'grey', 'lighten-3' );
+$inv-table-heading-bg: color( 'grey', 'lighten-4' );
+$inv-table-heading-color: color( 'grey', 'darken-3' );
+$inv-table-color: color( 'grey', 'darken-2' );
+$inv-table-body-heading-bg: color( 'grey', 'lighten-5' );
+// == Table Design
+.er-inv-table {
+	border-collapse: collapse;
+	margin: 10px auto;
+	width: 100%;
+	vertical-align: top;
+	border: $inv-table-border;
+	color: $inv-table-color;
+	font-size: 14px;
+	thead, tfoot {
+		background-color: $inv-table-heading-bg;
+		color: $inv-table-heading-color;
+		text-transform: uppercase;
+	}
+	tr {
+		border: $inv-table-border;
+	}
+	td, th {
+		padding: 14px;
+		vertical-align: top;
+		font-weight: normal;
+	}
+	th {
+		color: $inv-table-heading-color;
+		width: 40%;
+	}
+	tbody {
+		th[colspan] {
+			background-color: $inv-table-body-heading-bg;
+			color: $inv-table-heading-color;
+			text-transform: uppercase;
+		}
+	}
+}
+
+

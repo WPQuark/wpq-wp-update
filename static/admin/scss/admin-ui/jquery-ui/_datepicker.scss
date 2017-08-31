@@ -1,0 +1,294 @@
+// ==========================================================================
+// jQuery UI Date & DateTime Picker
+// ==========================================================================
+.ui-datepicker {
+	box-sizing: border-box;
+	&::before,
+	&::after,
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	width: 300px;
+	// @media screen and ( min-width: $screen-md-min ) {
+	// 	width: 350px;
+	// }
+	padding: 0 10px 10px 10px;
+	font-size: $font-size-base;
+	font-family: $font-family-base;
+	background-color: $preset-bg;
+	color: $secondary-text-color;
+	z-index: 10001 !important;
+
+	// Header section with month & year
+	.ui-datepicker-header {
+		padding: 14px 24px;
+		position: relative;
+		margin: -10px -10px 0 -10px;
+		@include material__box-shadow-inverse();
+
+		.ui-datepicker-prev,
+		.ui-datepicker-next {
+			position: absolute;
+			height: 24px;
+			width: 24px;
+			left: 0;
+			top: 50%;
+			margin-top: -12px;
+			.ui-icon {
+				&::after {
+					content: "\f053";
+					font-family: 'ipt-icomoon';
+					font-style: normal;
+					font-variant: normal;
+					font-weight: normal;
+					-webkit-font-smoothing: antialiased;
+				}
+			}
+		}
+		.ui-datepicker-next {
+			left: auto;
+			right: 0;
+
+			.ui-icon {
+				&::after {
+					content: "\f054";
+				}
+			}
+		}
+
+		.ui-datepicker-title {
+			text-align: center;
+			margin: 0;
+			line-height: $line-height-computed;
+			font-size: 1.5em;
+
+			select {
+				display: inline-block;
+				text-align: center;
+				background-color: transparent;
+				border: 0 none;
+				color: $primary-color-text;
+				border-bottom: 1px solid $primary-color-dark;
+				width: 80px;
+				line-height: $line-height-computed;
+				&:active,
+				&:focus {
+					outline: none;
+				}
+
+				option {
+					font-size: 0.8em;
+					text-align: center;
+					color: $secondary-text-color;
+					line-height: $line-height-computed;
+				}
+
+				// @media screen and ( min-width: $screen-md-min ) {
+				// 	width: 100px;
+				// }
+			}
+		}
+	}
+
+	// Calender Section
+	table.ui-datepicker-calendar {
+		border-collapse: collapse;
+		border: 0 none;
+		text-align: center;
+
+		thead, tbody, tr, td, th {
+			text-align: center;
+		}
+		th {
+			font-weight: 400;
+		}
+		td {
+			font-weight: 300;
+		}
+		td, th {
+			height: 54px;
+			width: 54px;
+			padding: 0;
+			margin: 0;
+		}
+		.ui-datepicker-today {
+			a {
+				background-color: $divider-color;
+			}
+		}
+		a,
+		span {
+			color: $secondary-text-color;
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+			text-align: center;
+			width: 32px;
+			height: 32px;
+			line-height: 32px;
+			border-radius: 50%;
+			will-change: background-color, color;
+			// @media screen and ( min-width: $screen-md-min ) {
+			// 	width: 48px;
+			// 	height: 48px;
+			// 	line-height: 48px;
+			// }
+			@include material__smooth-tran( 200ms, all );
+			&:hover,
+			&:active {
+				text-decoration: none;
+				color: $secondary-text-color;
+			}
+			&:hover {
+				background-color: $divider-color;
+			}
+			&.ui-state-active {
+				background-color: $primary-color;
+				color: $primary-color-text;
+			}
+		}
+
+		.ui-datepicker-unselectable {
+			span {
+				background-color: transparent;
+				color: $disabled-color-text;
+			}
+		}
+	}
+	// Buttons
+	.ui-datepicker-buttonpane {
+		background-color: $preset-button-container;
+		padding: 0;
+		margin: 0 -10px;
+		position: relative;
+		bottom: -10px;
+
+		// Clearing
+		&::after {
+			display: block;
+			zoom: 1;
+			content: "";
+			clear: both;
+		}
+
+		// Buttons
+		button {
+			margin: 0;
+			background: transparent;
+			position: relative;
+			color: $preset-button-container-color;
+			@include material__smooth-tran( 200ms );
+			will-change: background-color, color;
+			font-size: 1em;
+			border-radius: 0;
+			border: 0 none;
+			overflow: hidden;
+			text-transform: uppercase;
+			padding: 1em 2em;
+			display: inline-block;
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				background-color: $preset-button-container-button-hover;
+				color: $preset-button-container-color;
+			}
+			&:active,
+			&:focus {
+				background-color: $primary-color;
+				color: $primary-color-text;
+				outline: none;
+			}
+
+			&[disabled] {
+				opacity: 0.5;
+			}
+			&.ui-datepicker-current {
+				float: left;
+			}
+			&.ui-datepicker-close {
+				float: right;
+			}
+		}
+	}
+
+	// Multi Date Picker
+	&.ui-datepicker-multi-3 {
+		width: 1008px !important;
+		font-size: 13px !important;
+		padding: 0;
+		.ui-datepicker-header {
+			width: 100%;
+			margin: 0;
+			box-shadow: none;
+			.ui-datepicker-title {
+				line-height: 27px;
+				font-size: 20px;
+				select {
+					&.ui-datepicker-month,
+					&.ui-datepicker-year {
+						width: 70px;
+						margin: 0;
+					}
+				}
+			}
+		}
+		.ui-datepicker-group {
+			width: 33.333333333333%;
+			table {
+				width: 336px;
+			}
+		}
+		.ui-datepicker-buttonpane {
+			margin: 0;
+			bottom: 0;
+		}
+	}
+}
+
+.ui-timepicker-div {
+	margin: 0 -10px;
+	font-size: $font-size-base;
+
+	> .ui-widget-header {
+		@include material__box-shadow-inverse();
+		text-transform: uppercase;
+		font-size: 1em;
+		padding: 1em;
+	}
+
+	dl {
+		padding: 0 10px;
+		text-align: left;
+		font-weight: normal;
+		margin: 0;
+		dt {
+			float: left;
+			clear:left;
+			padding: 0 0 0 5px;
+			font-weight: 300;
+		}
+		dd {
+			margin: 32px 10px 24px 40%;
+		}
+		.ui_tpicker_time {
+			text-align: right;
+			padding-bottom: 10px;
+			margin-top: 10px;
+			margin-top: 10px;
+			border-bottom: 1px solid $input-border-color;
+		}
+	}
+
+	.ui_tpicker_unit_hide{ display: none; }
+	.ui_tpicker_time .ui_tpicker_time_input { background: none; color: inherit; border: none; outline: none; width: 95%; }
+	.ui_tpicker_time .ui_tpicker_time_input:focus {  }
+}
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }

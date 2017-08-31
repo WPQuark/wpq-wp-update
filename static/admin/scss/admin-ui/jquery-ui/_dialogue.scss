@@ -1,0 +1,39 @@
+// ==========================================================================
+// jQuery UI Dialogue
+// ==========================================================================
+.ui-dialog {
+	padding: 0;
+	@include material__box-shadow();
+	font-size: $font-size-base;
+
+	.ui-dialog-titlebar {
+		padding: 10px 20px 7px;
+		border-bottom: 4px solid $primary-color-dark;
+		text-transform: uppercase;
+		@include material__box-shadow-subtle();
+
+		.ui-dialog-titlebar-close {
+			background-color: transparent;
+			border: 0 none;
+			box-shadow: none;
+			right: 10px;
+			color: $primary-color-text;
+			&:hover {
+				color: $primary-color-dark;
+			}
+			.ui-icon {
+				margin: 0;
+				left: 3px;
+				top: 3px;
+			}
+		}
+	}
+
+	.ui-dialog-buttonpane {
+		button {
+			padding: 10px 16px;
+		}
+	}
+}
+
+

@@ -1,0 +1,22 @@
+// ==========================================================================
+// eForm Admin UI Theme Preview
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_theme_preview {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		bottom: -2px;
+
+		> div {
+			@include material__box-shadow-subtle();
+			display: inline-block;
+			height: 3em;
+			width: 3em;
+			margin: 0 4px;
+			border-radius: 2px;
+			border: 2px solid $preset-bg;
+		}
+	}
+}
+

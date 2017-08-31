@@ -1,0 +1,24 @@
+// ==========================================================================
+// WebFont Selector
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_font_preview {
+		margin: 16px 0;
+		padding: 8px;
+		display: block;
+		border: 1px solid $disabled-color-text;
+		position: relative;
+		&::before {
+			display: block;
+			content: attr(data-label);
+			padding: 8px;
+			color: $primary-color-text;
+			text-transform: uppercase;
+			font-size: 12px;
+			font-family: $font-family-mono;
+			background-color: $disabled-color-text;
+			margin: -8px -8px 8px -8px;
+		}
+	}
+}
+

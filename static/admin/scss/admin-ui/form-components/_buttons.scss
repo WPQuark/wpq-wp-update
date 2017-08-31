@@ -1,0 +1,100 @@
+// ==========================================================================
+// eForm Admin Buttons
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_button {
+		border: 0 none;
+		overflow: hidden;
+		text-transform: uppercase;
+		padding: 1em 28px;
+		display: inline;
+		margin: 0;
+		background: $preset-button-container;
+		color: $preset-button-container-color;
+		box-shadow: none;
+		border-radius: 0;
+		cursor: pointer;
+		text-decoration: none;
+		&.ui-button-text-icon-primary {
+			padding-left: 49px;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+		@include material__smooth-tran( 200ms );
+
+		&:active,
+		&:visited,
+		&:focus {
+			text-decoration: none;
+			color: $preset-button-container-color;
+			outline: none;
+		}
+
+		&:hover {
+			background-color: $preset-button-container-button-hover;
+			text-decoration: none;
+		}
+
+		&[disabled] {
+			opacity: 0.5;
+			background: $disabled-color;
+			cursor: not-allowed;
+			&:hover {
+				background: $disabled-color;
+			}
+		}
+
+		.ui-icon {
+			margin-left: -14px;
+			margin-top: -2px;
+			left: -4px;
+		}
+		[class*="ipt-icomoon"] {
+			position: relative;
+			top: 1px;
+		}
+
+		&.small {
+			font-size: 0.8em;
+			padding: 1em 14px;
+			.ui-icon {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.ipt_uif_button_container {
+		text-align: left;
+		margin: 0.2em 0 ($line-height-computed / 2) 0;
+		&.align-center,
+		&.center {
+			text-align: center;
+		}
+		&.align-right,
+		&.right {
+			text-align: right;
+		}
+
+		&.ipt_uif_tab_buttons {
+			margin-top: 0;
+			background: $tab-toolbar-bg;
+			position: relative;
+			top: -1px;
+			@include material__box-shadow-bottom();
+			&::after {
+				display: block;
+				clear: both;
+				content: "";
+			}
+			.ipt_uif_button {
+				float: left;
+				background-color: transparent;
+
+				&:hover {
+					background-color: $tab-toolbar-hover;
+				}
+			}
+		}
+	}
+}

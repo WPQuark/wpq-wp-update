@@ -1,0 +1,47 @@
+// ==========================================================================
+// jQuery UI Buttons
+// ==========================================================================
+.ui-button {
+	border: 0 none;
+	outline: none;
+	overflow: hidden;
+	text-transform: uppercase;
+	padding: 1em 28px;
+	display: inline;
+	margin: 0;
+	background: $preset-button-container;
+	color: $preset-button-container-color;
+	box-shadow: none;
+	border-radius: 0;
+	cursor: pointer;
+	&.ui-button-text-icon-primary {
+		padding-left: 49px;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+	@include material__smooth-tran( 200ms );
+
+	&:active,
+	&:visited,
+	&:focus {
+		text-decoration: none;
+		color: $preset-button-container-color;
+		outline: none;
+	}
+
+	&:hover {
+		background-color: $preset-button-container-button-hover;
+		text-decoration: none;
+	}
+
+	&[disabled] {
+		opacity: 0.5;
+	}
+
+	.ui-icon {
+		margin-left: -14px;
+		margin-top: -2px;
+		left: -4px;
+	}
+}

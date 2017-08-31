@@ -1,0 +1,288 @@
+# Copyright (C) 2017 Swashata
+# This file is distributed under the GPL3.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Update Server 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpq-wp-update\n"
+"POT-Creation-Date: 2017-08-31 04:40:42+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:115
+msgid "Done"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:116
+msgid "Today"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:117
+msgid "Now"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:120
+msgid "Show a different month"
+msgstr ""
+
+#. translators: A is for AM
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:129
+msgctxt "timeMeridiem"
+msgid "AM"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:129
+msgctxt "timeMeridiem"
+msgid "A"
+msgstr ""
+
+#. translators: P is for PM
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:131
+msgctxt "timeMeridiem"
+msgid "PM"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:131
+msgctxt "timeMeridiem"
+msgid "P"
+msgstr ""
+
+#. translators: Change %s to the time suffix. %s is always replaced by an empty
+#. string
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:133
+msgctxt "timeSuffix"
+msgid "%s"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:134
+msgid "Choose Time"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:135
+msgid "Time"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:136
+msgid "Hour"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:137
+msgid "Minute"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:138
+msgid "Second"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:139
+msgid "Millisecond"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:140
+msgid "Microsecond"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:141
+msgid "Timezone"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:152
+msgid "Please Wait"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:153
+msgid "Confirm Deletion"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:154
+msgid "<p>Are you sure you want to delete?</p><p>The action can not be undone</p>"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:155
+msgid "Got it"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:156
+msgid "Help!"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:157
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1580
+msgid "Dismiss"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:250
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1502
+msgid "Invalid Callback"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:495
+msgid "Upload"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:496
+msgid "Choose Image"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:497
+msgid "Use Image"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:634
+msgctxt "wpq-sp-ui-heading"
+msgid "Heading %1$d"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:666
+msgctxt "ui-admin-layout"
+msgid "%d Column"
+msgid_plural "%d Columns"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:672
+msgid "Automatic Columns"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:708
+msgid "Left"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:713
+msgid "Top"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:718
+msgid "Right"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:723
+msgid "Bottom"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:728
+msgid "Inline Top Left"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:733
+msgid "Inline Top Right"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:738
+msgid "Inline Bottom Left"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:743
+msgid "Inline Bottom Right"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:767
+msgid "Align Left"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:768
+msgid "Align Center"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:769
+msgid "Align Right"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:770
+msgid "Align Justify"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:811
+msgid "Preview"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1644
+#: includes/admin/class-wpq-wp-update-admin.php:217
+msgid "Loading"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1725
+msgid "Invalid callback"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1798
+#: includes/admin/class-wpq-wp-update-admin-ui.php:1886
+msgid "Invalid Callback supplied"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin-ui.php:2042
+msgctxt "ipt_uif_sda"
+msgid "please click on %1$s button to get started"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:123
+msgid "Successfully saved the options."
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:127
+msgid "Either you have not changed anything or some error has occured. Please contact the developer."
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:131
+msgid "The Master Reset was successful."
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:241
+msgid "Processing"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:242
+msgid "Successfully saved the options"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:243
+msgid "Some error has occured"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:261
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:265
+msgid "Reset"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-admin.php:308
+#: includes/admin/class-wpq-wp-update-admin.php:314
+#: includes/admin/class-wpq-wp-update-admin.php:341
+#: includes/admin/class-wpq-wp-update-admin.php:347
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: includes/core/class-wpq-wp-update-install.php:28
+msgid "Sorry, SocialPress requires PHP 5.4 or better!"
+msgstr ""
+
+#: includes/core/class-wpq-wp-update-install.php:35
+msgid "Sorry, SocialPress requires WordPress version 4.0.0 or better!"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "WP Update Server"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wpquark.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "WP Update Server for your private & commercial Plugins"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Swashata"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://swashata.me"
+msgstr ""

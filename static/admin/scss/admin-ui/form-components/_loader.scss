@@ -1,0 +1,172 @@
+// ==========================================================================
+// CSS Spinner/Loader
+// ==========================================================================
+$green: #008744;
+$blue: #0057e7;
+$red: #d62d20;
+$yellow: #ffa700;
+$white: #eee;
+
+// scaling... any units
+.#{$selector} {
+	/* Modal Spinner */
+	.ipt_uif_ajax_loader {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		z-index: 99999;
+		background: rgba(255,255,255,0.7);
+		top: 0;
+		left: 0;
+		text-align: center;
+		.ipt_uif_ajax_loader_inner {
+			top: 50%;
+			position: relative;
+			margin: -24px auto 0;
+		}
+	}
+	.ipt_uif_ajax_loader_inner {
+		line-height: 36px;
+		font-size: 14px;
+		background: transparent;
+		display: inline-block;
+		padding: 10px 10px 0 0;
+		margin: 0;
+		overflow: hidden;
+		color: $primary-color;
+		font-weight: 300;
+
+		/* Text Icon & Animation */
+		.ipt_uif_ajax_loader_icon {
+			height: 36px;
+			width: 36px;
+			position: relative;
+			margin: 0 auto;
+			display: inline-block;
+			float: left;
+			&::before {
+				content: "";
+				display: block;
+				padding-top: 100%;
+			}
+
+			.eform-loader-circular {
+				height: 100%;
+				transform-origin: center center;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+
+				.eform-loader-path {
+					stroke-dasharray: 20, 22;
+					stroke-dashoffset: 0;
+					stroke-linecap: round;
+					stroke: $green;
+				}
+			}
+		}
+
+		.ipt_uif_ajax_loader_text {
+			text-shadow: none;
+			font-size: 16px;
+			line-height: 36px;
+			text-align: center;
+			margin-left: -8px;
+			display: inline-block;
+			margin: 0 0 0 5px;
+			text-align: left;
+		}
+	}
+
+	/* Inline Spinner */
+	.ipt_uif_ajax_loader_inline {
+		text-align: center;
+	}
+
+	/* Dots */
+	.ipt_uif_ajax_loader_hellip {
+		float: right;
+		line-height: 36px;
+		font-size: 16px;
+	}
+
+	/* Animation */
+	.ipt_uif_ajax_loader_animate {
+		.eform-loader-circular {
+			animation: ipt-eform-loader-rotate 2s linear infinite;
+		}
+		.eform-loader-path {
+			stroke-dasharray: 1, 200;
+			animation: ipt-eform-loader-dash 1.5s ease-in-out infinite, ipt-eform-loader-color 6s ease-in-out infinite;
+		}
+
+		.ipt_uif_ajax_loader_hellip {
+			span {
+				animation: ipt_uif_ajax_dot 1s infinite;
+				&.dot1 {
+					animation-delay: 100ms;
+				}
+
+				&.dot2 {
+					animation-delay: 300ms;
+				}
+
+				&.dot3 {
+					animation-delay: 500ms;
+				}
+			}
+		}
+	}
+}
+
+/* Dot dot dot... */
+@keyframes ipt_uif_ajax_dot {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes ipt-eform-loader-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes ipt-eform-loader-dash {
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35px;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124px;
+	}
+}
+
+@keyframes ipt-eform-loader-color {
+	100%,
+	0% {
+		stroke: $red;
+	}
+	40% {
+		stroke: $blue;
+	}
+	66% {
+		stroke: $green;
+	}
+	80%,
+	90% {
+		stroke: $yellow;
+	}
+}

@@ -1,0 +1,82 @@
+// ==========================================================================
+// Containers, Fancy & Collapsibles
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_collapsible {
+		margin-top: 14px;
+		margin-bottom: 14px;
+		@include material__box-shadow-subtle();
+		background-color: $preset-bg;
+		@include clear-after();
+		padding: 0;
+		// Head
+		.ipt_uif_box {
+			background-color: $styled-container-bg;
+			padding: 0;
+
+			h3 {
+				margin-top: 0;
+				margin-bottom: 0;
+				color: $secondary-text-color;
+				font-weight: 300;
+				border-bottom: 1px solid $divider-color;
+				font-size: ( 16 / 14 ) * 1em;
+				padding: 0;
+				text-transform: uppercase;
+
+				a {
+					will-change: color;
+					@include material__smooth-tran( 500ms, color );
+					color: $secondary-text-color;
+					display: block;
+					text-decoration: none;
+					padding: 14px;
+					font-weight: 400;
+					.collapsible_state {
+						float: right;
+					}
+					.heading_icon {
+						margin-right: 2px;
+					}
+
+					&:hover,
+					&:active,
+					&:focus {
+						text-decoration: none;
+						color: $secondary-text-color;
+						outline: none;
+					}
+
+					.collapsible_state {
+						font-size: ( 16 / 14 ) * 1em;
+						position: relative;
+						vertical-align: baseline;
+						transform-style: preserve-3d;
+						will-change: transform;
+						@include material__smooth-tran( 500ms, transform );
+					}
+
+					&.ipt_uif_collapsible_open {
+						color: $primary-text-color;
+						&:hover,
+						&:active,
+						&:focus {
+							color: $primary-text-color;
+						}
+
+						.collapsible_state {
+							transform: rotate3d(1, 0, 0, 180deg);
+						}
+					}
+				}
+			}
+		}
+
+		// Inner
+		.ipt_uif_collapsed {
+			padding: 14px;
+		}
+	}
+}
+
+

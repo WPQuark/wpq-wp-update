@@ -1,0 +1,30 @@
+// ==========================================================================
+// Heading Type Styling inside select2
+// ==========================================================================
+.select2-container {
+	span.ipt_uif_ht {
+		font-family: $font-family-base;
+		font-size: 24px;
+		padding: 8px 16px;
+		&.heading {
+			&-h2 {
+				font-size: 20px;
+			}
+			&-h3 {
+				font-size: 18px;
+			}
+			&-h4 {
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+			&-h5 {
+				font-size: 14px;
+			}
+			&-h6 {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+

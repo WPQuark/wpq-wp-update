@@ -1,0 +1,82 @@
+// ==========================================================================
+// Status Chips - Shows the status of events and connections
+// ==========================================================================
+.#{$selector} {
+	.ipt-status-chip {
+		padding: 0;
+		margin: 0 7px 14px 0;
+		border: 1px solid $divider-color;
+		background-color: $interaction-bg;
+		position: relative;
+		border-radius: 4px;
+		display: inline-flex;
+		flex-flow: row nowrap;
+		// flex-direction: row;
+		// flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+
+		.ipt-chip-icon {
+			background-color: $success-color;
+			color: $primary-color-text;
+			height: 36px;
+			width: 40px;
+			border-radius: 4px 0 0 4px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: -1px 0 -1px -1px;
+
+			.ipticm {
+				font-size: 16px;
+			}
+		}
+
+		&.chip-warning {
+			.ipt-chip-icon {
+				background-color: $update-color;
+			}
+		}
+
+		&.chip-error {
+			.ipt-chip-icon {
+				background-color: $error-color;
+			}
+		}
+
+		.ipt-chip-image {
+			height: 36px;
+			width: auto;
+		}
+
+		.ipt-chip-heading {
+			padding: 0 14px;
+			margin: 0;
+			color: $secondary-text-color;
+			font-size: 16px;
+			text-transform: uppercase;
+			line-height: 1;
+		}
+
+		.ipt-chip-cta {
+			font-size: 12px;
+			padding: 0 14px;
+			text-decoration: none;
+			line-height: 1;
+			color: $primary-color;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			background-color: $chip-cta-bg;
+			text-transform: uppercase;
+			margin: -1px -1px -1px 0;
+			border-radius: 0 4px 4px 0;
+			will-change: background-color;
+			@include material__smooth-tran( 200ms );
+			&:hover {
+				background-color: $chip-cta-bg-hover;
+			}
+		}
+	}
+}
+

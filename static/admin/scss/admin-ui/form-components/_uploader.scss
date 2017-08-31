@@ -1,0 +1,54 @@
+// ==========================================================================
+// eForm Admin UI Uploader
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_upload {
+		text-align: center;
+
+		a {
+			font-size: 32px;
+			float: left;
+			margin-left: 10px;
+		}
+
+		.ipt_uif_upload_bg {
+			background-color: #eee;
+			background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+			linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+			background-size: 30px 30px;
+			background-position: 0 0, 15px 15px;
+			@include material__box-shadow-subtle();
+			border: 3px solid $divider-color;
+			height: 100px;
+			width: 100%;
+			max-width: 250px;
+			margin: 0 auto 7px;
+		}
+
+		.ipt_uif_upload_preview {
+			background-attachment: scroll;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			cursor: pointer;
+		}
+
+		.ipt_uif_text {
+			text-align: center;
+		}
+
+		button {
+			width: auto !important;
+			float: none;
+			margin: 0;
+			display: inline-block;
+
+			&.ipt_uif_upload_float {
+				float: left;
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+

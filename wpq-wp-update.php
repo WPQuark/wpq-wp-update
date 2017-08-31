@@ -28,3 +28,10 @@ Domain Path: translations
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+// Some constants
+define( 'WPQ_WPUPDATE_ABSPATH', trailingslashit( dirname( __FILE__ ) ) );
+
+// Include composer
+require_once WPQ_WPUPDATE_ABSPATH . 'vendor/autoload.php';
+

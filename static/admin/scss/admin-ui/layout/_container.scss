@@ -1,0 +1,50 @@
+// ==========================================================================
+// eForm Admin UI Containers
+// ==========================================================================
+.#{$selector} {
+	.ipt-ui-backoffice-main-wrap {
+		display: none;
+	}
+
+	.ipt_uif_shadow {
+		@include material__box-shadow-subtle();
+		@include clear-after();
+		padding: 15px;
+		&.shadow-heavy {
+			@include material__box-shadow();
+		}
+		&.shadow-bottom {
+			@include material__box-shadow-bottom();
+		}
+	}
+
+	.ui-widget,
+	.ui-widget-content,
+	.ipt_uif_shadow {
+		.ipt_uif_shadow {
+			box-shadow: none;
+			border: 1px solid $divider-color;
+			margin-bottom: -1px;
+
+			&.shadow-heavy {
+				@include material__box-shadow();
+			}
+			&.shadow-bottom {
+				@include material__box-shadow-bottom();
+			}
+		}
+
+		.ipt_uif_box {
+			padding: 0 14px;
+		}
+	}
+
+	.ipt_uif_container {
+		margin: 10px auto;
+		width: auto;
+		max-width: 1375px;
+		padding: 0 5px;
+	}
+}
+
+

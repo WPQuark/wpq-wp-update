@@ -1,0 +1,46 @@
+// ==========================================================================
+// Radio/Checkbox with image selector
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_rc_image_wrap {
+		input[type="checkbox"].ipt_uif_checkbox,
+		input[type="radio"].ipt_uif_radio {
+			+ label {
+				padding-left: 0;
+
+				&::before,
+				&::after {
+					display: none;
+				}
+
+				img {
+					border: 1px solid $disabled-color;
+					opacity: 0.5;
+					filter: grayscale( 100% );
+					@include material__smooth-tran( all, 400ms );
+					will-change: border-color, opacity, filter;
+					height: 96px;
+					width: 96px;
+				}
+
+				&:hover {
+					img {
+						opacity: 1;
+						filter: grayscale( 0% );
+					}
+				}
+			}
+			&:checked {
+				+ label {
+					img {
+						border-color: transparent;
+						opacity: 1;
+						filter: grayscale( 0% );
+					}
+				}
+			}
+		}
+	}
+}
+
+

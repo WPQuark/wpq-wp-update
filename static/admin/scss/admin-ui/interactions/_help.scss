@@ -1,0 +1,44 @@
+// ==========================================================================
+// eForm Admin Help Icons
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_msg {
+		height: 32px;
+		width: 32px;
+		font-size: 24px;
+		line-height: 32px;
+		float: right;
+		margin: 0 0 5px 0;
+		text-align: center;
+		&.ipt_uif_msg_left {
+			float: left;
+			text-align: left;
+		}
+		&.ipt_uif_msg_inline {
+			float: none;
+			display: inline-block;
+			margin: 0 5px;
+		}
+
+		a {
+			color: $disabled-color-text;
+			text-decoration: none;
+			will-change: color;
+			@include material__smooth-tran( 400ms, color );
+			&:hover {
+				color: $primary-color;
+				text-decoration: none;
+			}
+		}
+
+		.ipt_uif_msg_body {
+			display: none;
+		}
+	}
+
+	table.form-table .ipt_uif_msg {
+		float: right;
+	}
+}
+
+

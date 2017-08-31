@@ -1,0 +1,62 @@
+// ==========================================================================
+// Mixing Related to eForm Material Theme
+// ==========================================================================
+// == Box Sizing
+@mixin material__sizing( $size: border-box ) {
+	box-sizing: $size;
+	&::before {
+		box-sizing: $size;
+	}
+	&::after {
+		box-sizing: $size;
+	}
+}
+
+// == Clear after
+@mixin clear-after() {
+	&::after {
+		display: block;
+		content: "";
+		zoom: 1;
+		clear: both;
+	}
+}
+
+// == Transition
+@mixin material__smooth-tran( $time: 200ms, $prop: all, $easing: ease-in-out ) {
+	transition: $prop $time $easing;
+}
+
+// == Box Shadow
+@mixin material__box-shadow( $color: $box-shadow-color ) {
+	box-shadow: 0 2px 2px 0px fade-out( $color, ( 1 - 0.14 ) ),
+		0 3px 1px -2px fade-out( $color, ( 1 - 0.2 ) ),
+		0 1px 5px 0 fade-out( $color, ( 1 - 0.12 ) );
+}
+@mixin material__box-shadow-inverse( $color: $box-shadow-color ) {
+	box-shadow: 0 -2px 2px 0px fade-out( $color, ( 1 - 0.14 ) ),
+		0 -3px 1px -2px fade-out( $color, ( 1 - 0.2 ) ),
+		0 -1px 5px 0 fade-out( $color, ( 1 - 0.12 ) );
+}
+@mixin material__box-shadow-straight( $color: $box-shadow-color ) {
+	box-shadow: 0 0 2px 0px fade-out( $color, ( 1 - 0.14 ) ),
+		0 0 1px -2px fade-out( $color, ( 1 - 0.2 ) ),
+		0 0 5px 0 fade-out( $color, ( 1 - 0.12 ) );
+}
+@mixin material__box-shadow-hover( $color: $box-shadow-color ) {
+	box-shadow: 0 3px 3px 0 fade-out( $color, ( 1 - 0.14 ) ),
+		0 1px 7px 0 fade-out( $color, ( 1 - 0.12 ) ),
+		0 3px 1px -1px fade-out( $color, ( 1 - 0.2 ) );
+}
+@mixin material__box-shadow-subtle( $color: $box-shadow-color ) {
+	box-shadow: 0 0 1px 0px fade-out( $color, ( 1 - 0.14 ) ),
+		0 0 1px -2px fade-out( $color, ( 1 - 0.2 ) ),
+		0 0 1px 0 fade-out( $color, ( 1 - 0.12 ) );
+}
+@mixin material__box-shadow-bottom( $color: $box-shadow-color ) {
+	box-shadow: 0 1px 1px 0px fade-out( $color, ( 1 - 0.14 ) ),
+		0 1px 1px -2px fade-out( $color, ( 1 - 0.2 ) ),
+		0 1px 1px 0 fade-out( $color, ( 1 - 0.12 ) );
+}
+
+

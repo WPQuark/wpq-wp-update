@@ -1,0 +1,18 @@
+// ==========================================================================
+// Basic Widget Styling
+// ==========================================================================
+.ui-widget {
+	@include material__box-shadow-subtle();
+	background-color: $preset-bg;
+	color: $primary-text-color;
+}
+
+.ui-widget-header {
+	background: $primary-color;
+	color: $primary-color-text;
+	@include material__box-shadow-subtle();
+
+	a {
+		color: $primary-color-text;
+	}
+}

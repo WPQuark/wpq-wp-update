@@ -1,0 +1,128 @@
+// ==========================================================================
+// eForm Material Radio Buttons
+// ==========================================================================
+
+.#{$selector} {
+	// Remove default Radio Buttons
+	[type="radio"].ipt_uif_radio:not(:checked),
+	[type="radio"].ipt_uif_radio:checked {
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+	}
+
+	[type="radio"].ipt_uif_radio:not(:checked) + label,
+	[type="radio"].ipt_uif_radio:checked + label {
+		position: relative;
+		padding-left: 35px;
+		cursor: pointer;
+		display: inline-block;
+		height: auto;
+		line-height: 28px;
+		min-height: 28px;
+		font-size: 1em;
+		transition: .28s ease;
+		font-weight: 400;
+		-khtml-user-select: none; /* webkit (konqueror) browsers */
+		user-select: none;
+	}
+
+	[type="radio"].ipt_uif_radio + label:before,
+	[type="radio"].ipt_uif_radio + label:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 1px 4px 4px 4px;
+		width: 24px;
+		height: 24px;
+		z-index: 0;
+		transition: .28s ease;
+	}
+
+	/* Unchecked styles */
+	[type="radio"].ipt_uif_radio:not(:checked) + label:before,
+	[type="radio"].ipt_uif_radio:not(:checked) + label:after,
+	[type="radio"].ipt_uif_radio:checked + label:before,
+	[type="radio"].ipt_uif_radio:checked + label:after,
+	[type="radio"].ipt_uif_radio.with-gap:checked + label:before,
+	[type="radio"].ipt_uif_radio.with-gap:checked + label:after {
+		border-radius: 50%;
+	}
+
+	[type="radio"].ipt_uif_radio:not(:checked) + label:before,
+	[type="radio"].ipt_uif_radio:not(:checked) + label:after {
+		border: 2px solid $radio-empty-color;
+	}
+
+	[type="radio"].ipt_uif_radio:not(:checked) + label:after {
+		transform: scale(0);
+	}
+
+	/* Checked styles */
+	[type="radio"].ipt_uif_radio:checked + label:before {
+		border: 2px solid transparent;
+	}
+
+	[type="radio"].ipt_uif_radio:checked + label:after {
+		border: $radio-border;
+	}
+
+	[type="radio"].ipt_uif_radio:checked + label:after {
+		background-color: $radio-fill-color;
+	}
+
+	[type="radio"].ipt_uif_radio:checked + label:after {
+		content: "\e18e";
+		font-family: 'ipt-icomoon';
+		font-style: normal;
+		font-variant: normal;
+		font-weight: normal;
+		-webkit-font-smoothing: antialiased;
+		transform: scale(0.5);
+		color: $radio-icon-color;
+		line-height: 20px;
+		text-align: center;
+		transform: scale(1);
+		background-color: transparent;
+		color: $radio-fill-color;
+	}
+
+	/* Focused styles */
+	[type="radio"].ipt_uif_radio.tabbed:focus + label:before {
+		box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+	}
+
+	/* Disabled Radio With gap */
+	[type="radio"].ipt_uif_radio.with-gap:disabled:checked + label:before {
+		border: 2px solid $input-disabled-color;
+	}
+
+	[type="radio"].ipt_uif_radio.with-gap:disabled:checked + label:after {
+		border: none;
+		background-color: $input-disabled-color;
+	}
+
+	/* Disabled style */
+	[type="radio"].ipt_uif_radio:disabled:not(:checked) + label:before,
+	[type="radio"].ipt_uif_radio:disabled:checked + label:before {
+		background-color: transparent;
+		border-color: $input-disabled-color;
+	}
+
+	[type="radio"].ipt_uif_radio:disabled + label {
+		color: $input-disabled-color;
+	}
+
+	[type="radio"].ipt_uif_radio:disabled:not(:checked) + label:before {
+		border-color: $input-disabled-color;
+	}
+
+	[type="radio"].ipt_uif_radio:disabled:checked + label:after {
+		background-color: $input-disabled-color;
+		border-color: $input-disabled-solid-color;
+	}
+}
+
+
+

@@ -1,0 +1,254 @@
+// == Schemes
+$primary-scheme                       : 'blue-grey' !default;
+$text-scheme                          : 'grey' !default;
+
+// == Colors
+$primary-color-dark                   : color( $primary-scheme, 'darken-2' )!default;
+$primary-color                        : color( $primary-scheme, 'base' ) !default;
+$primary-color-light                  : color( $primary-scheme, 'lighten-4' ) !default;
+$primary-color-text                   : color( 'shades', 'white' ) !default;
+$accent-color                         : color( $primary-scheme, 'darken-3' ) !default;
+$primary-text-color                   : color( $text-scheme, 'darken-4' ) !default;
+$secondary-text-color                 : color( $text-scheme, 'darken-1' ) !default;
+$divider-color                        : color( $text-scheme, 'lighten-3' ) !default;
+$disabled-color                       : color( $text-scheme, 'lighten-4' ) !default;
+$disabled-color-text                  : color( $text-scheme, 'lighten-2' ) !default;
+
+// == Helper Colors
+$box-shadow-color                     : color( 'shades', 'black' ) !default;
+
+// == Preset eForm Layout Colors
+$preset-bg                            : color( 'shades', 'white' ) !default;
+$preset-button-container              : color( $text-scheme, 'lighten-2' ) !default;
+$preset-button-container-color        : $secondary-text-color !default;
+$preset-button-container-button-hover : color( $text-scheme, 'lighten-1' ) !default;
+
+// == Validation Colors
+$success-color                        : color( 'green', 'base' ) !default;
+$error-color                          : color( 'red', 'base' ) !default;
+$update-color                         : color( 'yellow', 'darken-3' ) !default;
+$interaction-bg                       : color( $text-scheme, 'lighten-5' ) !default;
+$dismiss-bg                           : color( $text-scheme, 'lighten-5' ) !default;
+$dismiss-hover                        : color( $text-scheme, 'lighten-4' ) !default;
+$dismiss-border                       : color( $text-scheme, 'lighten-4' ) !default;
+$dismiss-color                        : color( $text-scheme, 'lighten-1' ) !default;
+$description-color                    : color( $text-scheme, 'lighten-1' ) !default;
+$chip-cta-bg                          : color( $text-scheme, 'lighten-3' ) !default;
+$chip-cta-bg-hover                    : color( $text-scheme, 'lighten-2' ) !default;
+
+// == FontIconPicker
+$fip-sb-border                        : $divider-color !default;
+$fip-sb-color                         : color( $text-scheme, 'lighten-5' ) !default;
+$fip-sb-hover-color                   : color( $text-scheme, 'lighten-3' ) !default;
+$fip-sbi-color                        : $secondary-text-color !default;
+$fip-single-icon-border               : color( $text-scheme, 'lighten-3' ) !default;
+$fip-single-icon-bg                   : color( $text-scheme, 'lighten-5' ) !default;
+
+// == Tab Toolbar
+$tab-toolbar-bg                       : color( $text-scheme, 'lighten-5' ) !default;
+$tab-toolbar-hover                    : color( $text-scheme, 'lighten-3' ) !default;
+
+// == Materialize eForm Textinput & Textarea Components
+$input-height                         : 3em !default;
+$input-border-color                   : color( $text-scheme, 'base' ) !default;
+$input-border                         : 1px solid $input-border-color !default;
+$input-background                     : transparent !default;
+$input-error-color                    : $error-color !default;
+$input-success-color                  : $success-color !default;
+$input-focus-color                    : $primary-color !default;
+$input-font-size                      : 1em !default;
+$input-margin                         : 0 !default;
+$input-padding                        : 0 !default;
+$input-transition                     : border-color .3s, color .3s, box-shadow .3s !default;
+$label-font-size                      : .8em !default;
+$input-disabled-color                 : $disabled-color-text !default;
+$input-disabled-solid-color           : $disabled-color !default;
+$input-disabled-border                : 1px dotted $input-disabled-color !default;
+$input-invalid-border                 : 1px solid $input-error-color !default;
+$placeholder-text-color               : lighten($input-border-color, 20%) !default;
+
+// == Radio Buttons
+$radio-fill-color                     : $primary-color !default;
+$radio-empty-color                    : $input-border-color !default;
+$radio-border                         : 2px solid $radio-fill-color !default;
+$radio-icon-color                     : $primary-color-text !default;
+
+// == Checkbox Buttons
+$checkbox-bg-color                    : $preset-bg !default;
+
+// == Switches
+$switch-bg-color                      : $primary-color !default;
+$switch-checked-lever-bg              : $primary-color-light !default;
+$switch-unchecked-bg                  : color( $text-scheme, 'lighten-4' ) !default;
+$switch-unchecked-lever-bg            : color( $text-scheme, 'lighten-2' ) !default;
+$switch-radius                        : 15px !default;
+
+// == Sliders
+$slider-bg-color                      : color( $text-scheme, 'lighten-2' ) !default;
+$slider-lever-bg                      : $primary-color !default;
+$slider-lever-active-bg               : $primary-color-dark !default;
+
+// == Select2
+$select2-highlight                    : $primary-color !default;
+$select2-highlight-color              : color( 'shades', 'white' ) !default;
+$select2-highlight-selected           : color( $text-scheme, 'lighten-2' ) !default;
+
+// == Select
+$select-border: 1px solid #f2f2f2 !default;
+$select-background: rgba(255, 255, 255, 0.90) !default;
+$select-focus: 1px solid $primary-color !default;
+$select-padding: 5px !default;
+$select-radius: 2px !default;
+$select-disabled-color: rgba(0,0,0,.3) !default;
+
+// == Sortable
+$sortable-icon-color                  : color( $text-scheme, 'lighten-1' ) !default;
+$sortable-border-color                : color( $text-scheme, 'lighten-3' ) !default;
+$sortable-bg-color                    : color( 'shades', 'white' ) !default;
+
+// == Table
+$table-border-color                   : $divider-color !default;
+$table-striped-color                  : color( $text-scheme, 'lighten-4' ) !default;
+
+// == Keyboard
+$keyboard-bg                          : color( $text-scheme, 'lighten-5' ) !default;
+$keyboard-color                       : $secondary-text-color !default;
+$keyboard-num-border-color            : color( $text-scheme, 'lighten-4' ) !default;
+$keyboard-num-border                  : 1px solid $keyboard-num-border-color !default;
+$keyboard-action-bg                   : color( $text-scheme, 'lighten-4' ) !default;
+$keyboard-hover-bg                    : $primary-color-light !default;
+$keyboard-active-bg                   : $primary-color !default;
+$keyboard-hover-text                  : $primary-color-text !default;
+
+// User Portal
+$up-button-container                  : color( $text-scheme, 'lighten-4' ) !default;
+$up-button-container-color            : $secondary-text-color !default;
+
+// == Container
+$styled-container-bg                  : color( $text-scheme, 'lighten-5' ) !default;
+
+// == Spinner
+$spinner-default-color                : $primary-color-light !default;
+
+// == Builder
+$builder-adder-background             : $divider-color !default;
+$builder-adder-background-hover       : $preset-button-container-button-hover !default;
+
+$builder-droppable-bg                 : $preset-bg !default;
+$builder-droppable-hover-bg           : $preset-button-container !default;
+$builder-droppable-color              : $preset-button-container-color !default;
+$builder-droppable-border             : $divider-color !default;
+$builder-droppable-grayed-bg          : $disabled-color !default;
+$builder-droppable-grayed-color       : $preset-button-container-button-hover !default;
+
+
+$builder-layout-nav-border            : color( $text-scheme, 'lighten-2' ) !default;
+$builder-layout-nav-sortable-hl       : color( $text-scheme, 'lighten-1' ) !default;
+$builder-layout-nav-sortable-drop     : $preset-bg !default;
+
+$builder-layout-dh-sortable-hl       : color( $text-scheme, 'lighten-4' ) !default;
+$builder-layout-dh-sortable-drop     : color( $text-scheme, 'lighten-4' ) !default;
+$builder-layout-dh-sortable-ph       : color( $text-scheme, 'lighten-1' ) !default;
+
+// == Selectors
+$selector                             : wpq-sp-admin-ui !default;
+$select2-theme                        : eform-material !default;
+$svg-path                             : "../images/ring-alt.svg" !default;
+
+// == Typography
+// Fonts
+$font-family-base                     : 'Roboto', 'Noto Sans', 'Arial', sans-serif !default;
+$font-family-mono                     : 'Lucida Console', Courier, monospace !default;
+$font-size-base                       : 14px !default;
+$font-size-large                      : ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small                      : ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$font-size-h1                         : floor(($font-size-base * 2.6)) !default; // ~36px
+$font-size-h2                         : floor(($font-size-base * 2.15)) !default; // ~30px
+$font-size-h3                         : ceil(($font-size-base * 1.7)) !default; // ~24px
+$font-size-h4                         : ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-h5                         : $font-size-base !default;
+$font-size-h6                         : ceil(($font-size-base * 0.85)) !default; // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base                     : 1.428571429 !default; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed                 : floor(($font-size-base * $line-height-base)) !default; // ~20px
+
+$body-font-family                     : $font-family-base !default;
+$body-font-weight                     : 400 !default;
+
+$strong-font-weight                   : 700 !default;
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family                 : $font-family-base !default;
+$headings-font-weight                 : 400 !default;
+$headings-line-height                 : 1.1 !default;
+$headings-color                       : inherit !default;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xs                            : 480px !default;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min                        : $screen-xs !default;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone                         : $screen-xs-min !default;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm                            : 768px !default;
+$screen-sm-min                        : $screen-sm !default;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet                        : $screen-sm-min !default;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md                            : 992px !default;
+$screen-md-min                        : $screen-md !default;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop                       : $screen-md-min !default;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg                            : 1200px !default;
+$screen-lg-min                        : $screen-lg !default;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop                    : $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max                        : ($screen-sm-min - 1) !default;
+$screen-sm-max                        : ($screen-md-min - 1) !default;
+$screen-md-max                        : ($screen-lg-min - 1) !default;
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+$grid-columns                         : 12 !default;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width                    : 15px !default;
+$element-top-margin                   : $grid-gutter-width/3 !default;
+$element-bottom-margin                : ($grid-gutter-width*2)/3 !default;
+
+// 11. Global
+// ==========================================================================
+
+// Media Query Ranges
+$small-screen-up                      : 601px !default;
+$medium-screen-up                     : 993px !default;
+$large-screen-up                      : 1201px !default;
+$small-screen                         : 600px !default;
+$medium-screen                        : 992px !default;
+$large-screen                         : 1200px !default;
+
+$medium-and-up                        : "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up                         : "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down                       : "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down                      : "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only                          : "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;

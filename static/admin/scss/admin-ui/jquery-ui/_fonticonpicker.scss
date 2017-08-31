@@ -1,0 +1,140 @@
+// ==========================================================================
+// Custom Theme for fontIconPicker
+// ==========================================================================
+
+.icons-selector {
+	/* Main container */
+	&.fip-ipt {
+		font-size: 16px;
+
+		/* Icon selector */
+		.selector {
+			border: 0 none;
+			background-color: $preset-bg;
+			width: 102px;
+			@include material__box-shadow-subtle();
+		}
+		/* Selector open button */
+		.selector-button {
+			background-color: $fip-sb-color;
+			border-left: 1px solid $fip-sb-border;
+			border-radius: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			width: 42px;
+			/* Selector open button icon */
+			i {
+				color: $fip-sbi-color;
+				text-shadow: 0px 1px 0px $preset-bg;
+			}
+			/* Selector open button hover */
+			&:hover {
+				background-color: $fip-sb-hover-color;
+			}
+			&:active {
+				@include material__box-shadow-subtle();
+			}
+		}
+
+		/* Selected icon */
+		.selected-icon {
+			background-color: $preset-bg;
+			border-radius: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			i {
+				color: $primary-color;
+			}
+		}
+
+		/* IconPicker Popup */
+		.selector-popup {
+			margin-left: -1px;
+			background-color: $preset-bg;
+			border: 1px solid $fip-sb-border;
+		}
+		/* Search input & category selector */
+		.selector-search input[type="text"],
+		.selector-category select {
+			border: 0 none;
+			border-bottom: 1px solid $input-border-color;
+			color: $primary-text-color;
+			-moz-box-shadow: none;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			outline: none;
+			border-radius: 0;
+		}
+		.selector-search input[type="text"]:focus,
+		.selector-category select:focus {
+			border-bottom: 1px solid $input-focus-color;
+			box-shadow: 0 1px 0 0 $input-focus-color;
+			color: $secondary-text-color;
+		}
+		/* Search input placeholder */
+		input::-webkit-input-placeholder { color:$placeholder-text-color; }
+		input:-moz-placeholder { color:$placeholder-text-color; }
+		input::-moz-placeholder { color:$placeholder-text-color;}
+		input:-ms-input-placeholder { color:$placeholder-text-color !important; }
+		/* Search and cancel icon */
+		.selector-search i {
+			color: $placeholder-text-color;
+			top: 11px;
+		}
+		/* Icon Container inside Popup */
+		.fip-icons-container {
+			background-color: $preset-bg;
+			border: 1px solid $divider-color;
+			border-radius: 0;
+		}
+		/* Icon container loading */
+		.fip-icons-container .loading {
+			color: $disabled-color;
+		}
+		/* Single icon box */
+		.fip-box {
+			border: 1px solid $fip-single-icon-border;
+			border-radius: 2px;
+			background-color: $fip-single-icon-bg;
+		}
+		/* Single icon box hover */
+		.fip-box:hover {
+			background-color: $preset-bg;
+			border-color: $primary-color;
+			box-shadow: 0 1px 1px fade-out( $primary-color, 0.4 );
+			font-size: 1.6em;
+		}
+
+		/* Pagination and footer icons */
+		.selector-footer, .selector-footer i {
+			color: $primary-color;
+		}
+
+		/* Pagination arrows icons hover */
+		.selector-arrows i:hover {
+			color: $primary-color;
+		}
+		/* Currently selected icon color */
+		span.current-icon, span.current-icon:hover {
+			background-color: $primary-color;
+			color: $primary-color-text;
+			border: 1px solid $primary-color;
+		}
+		span.current-icon i, span.current-icon:hover i {
+			color: $primary-color-text;
+		}
+		/* No icons found */
+		.icons-picker-error i:before {
+			color: $error-color;
+		}
+
+		/* Transitions */
+		.selector-search input[type="text"],
+		.selector-category select,
+		.fip-box {
+			@include material__smooth-tran( 300ms );
+		}
+	}
+}

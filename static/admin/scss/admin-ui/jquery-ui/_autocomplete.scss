@@ -1,0 +1,27 @@
+// ==========================================================================
+// jQuery UI AutoComplete Styling
+// ==========================================================================
+.ui-autocomplete {
+	background-color: $preset-bg;
+	padding: 14px 0;
+	font-size: $font-size-base;
+	font-family: $font-family-base;
+	line-height: $line-height-base;
+	color: $secondary-text-color;
+
+	.ui-menu-item {
+		will-change: background, color;
+		@include material__smooth-tran( 200ms );
+		padding: 12px 10px;
+		border: 0 none;
+		&:hover,
+		&.ui-state-focus {
+			margin: 0;
+			border: 0 none;
+			background-color: $primary-color;
+			color: $primary-color-text;
+		}
+	}
+}
+
+

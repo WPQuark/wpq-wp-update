@@ -1,0 +1,94 @@
+// ==========================================================================
+// eForm Admin Styling Form Table
+// ==========================================================================
+.#{$selector} {
+	.form-table {
+		margin-bottom: 14px;
+		margin-top: 0;
+		th,
+		td {
+			padding: 10px;
+		}
+		td[colspan="3"],
+		td.full-view {
+			padding: 0;
+			table {
+				margin-bottom: -1px;
+			}
+		}
+		tr {
+			th:first-child {
+				width: 400px !important;
+				vertical-align: top;
+			}
+		}
+		[colspan="2"],
+		[colspan="3"] {
+			> label,
+			> h3 {
+				text-transform: uppercase;
+				margin: 16px 0;
+				color: $accent-color;
+			}
+		}
+		tbody {
+			tr {
+				border-bottom: 1px solid $divider-color;
+				td > label {
+					display: inline-block;
+					margin-right: 7px;
+					min-width: 100px;
+					text-align: right;
+				}
+				th label {
+					min-width: none;
+					text-align: left;
+					display: block;
+					margin-top: 10px;
+					margin-right: 0;
+				}
+				input[type="checkbox"],
+				input[type="radio"] {
+					+ label {
+						text-align: left;
+					}
+				}
+			}
+		}
+
+		span.description {
+			display: block;
+			margin-top: 7px;
+			color: $description-color;
+			font-size: 14px;
+			font-style: italic;
+			text-shadow: none;
+			font-weight: normal;
+		}
+	}
+
+	.ipt_uif_box {
+		.form-table {
+			tr {
+				&:last-child {
+					border-bottom: 0 none;
+				}
+			}
+		}
+	}
+
+	.ui-tabs-vertical {
+		.form-table {
+			tr {
+				th:first-child {
+					width: 300px !important;
+				}
+			}
+		}
+		.ui-tabs-panel > .form-table {
+			margin: -14px 0;
+		}
+	}
+}
+
+

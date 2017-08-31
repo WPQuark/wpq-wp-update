@@ -1,0 +1,68 @@
+// ==========================================================================
+// eForm Admin UI Icon Box
+// ==========================================================================
+
+.#{$selector} {
+	.ipt_uif_iconbox {
+		margin: 20px 0 0;
+		padding: 0;
+		@include material__box-shadow-subtle();
+		@include clear-after();
+
+		// Head
+		> .ipt_uif_box {
+			background-color: $primary-color;
+			border-bottom: 4px solid $primary-color-dark;
+			@include material__box-shadow-subtle();
+			width: 100%;
+			padding: 0;
+			margin: 0;
+
+			.button {
+				float: right;
+				padding: 5px 14px;
+				margin: 0;
+				position: relative;
+				top: -7px;
+				right: -7px;
+				line-height: 18px;
+				@include material__box-shadow-subtle();
+			}
+
+			> * {
+				margin: 0;
+				color: $primary-color-text;
+				padding: 14px 14px 10px 14px;
+				vertical-align: middle;
+				font-size: 16px;
+				text-transform: uppercase;
+				&.ipt_uif_float_right,
+				&.ipt_uif_float_left {
+					margin-top: -5px;
+				}
+			}
+			[class*="ipt-icomoon-"] {
+				vertical-align: text-bottom;
+				margin-right: 0.2em;
+				line-height: 1.1;
+			}
+		}
+
+		// Inner
+		.ipt_uif_iconbox_inner {
+			padding: 14px;
+			background-color: $preset-bg;
+			color: $secondary-text-color;
+			p {
+				margin: 5px 0;
+			}
+		}
+
+		// No padding if has inner UI
+		&.has-inner-ui .ipt_uif_iconbox_inner {
+			padding: 0 14px;
+		}
+	}
+}
+
+

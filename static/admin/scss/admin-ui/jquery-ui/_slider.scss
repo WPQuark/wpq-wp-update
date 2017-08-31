@@ -1,0 +1,60 @@
+// ==========================================================================
+// jQuery UI Slider - Materialized
+// ==========================================================================
+
+.ui-slider {
+	box-shadow: none;
+	height: 4px;
+	background: $slider-bg-color;
+	border-radius: 2px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	border-radius: 100%;
+	background: $slider-lever-bg;
+	height: 16px;
+	width: 16px;
+	top: -6px;
+	margin-left: -8px;
+	@include material__smooth-tran( background, 200ms );
+	&.ui-state-active {
+		background: $slider-lever-active-bg;
+	}
+}
+
+.ui-slider-pips {
+	.ui-slider-pip {
+		width: 4em;
+		margin-left: -2em;
+		text-align: center;
+
+		.ui-slider-label {
+			font-weight: 400;
+			width: 4em;
+			margin-left: -2em;
+			color: $secondary-text-color;
+			text-align: center;
+		}
+	}
+
+
+	.ui-slider-pip-selected,
+	.ui-slider-pip-inrange,
+	.ui-slider-pip-selected-1,
+	.ui-slider-pip-selected-2 {
+		.ui-slider-label {
+			font-weight: 400;
+			color: $primary-color;
+		}
+		.ui-slider-line {
+			background-color: $primary-color;
+		}
+	}
+	&:not(.ui-slider-disabled) {
+		.ui-slider-pip:hover .ui-slider-label {
+			font-weight: 400;
+			color: inherit;
+		}
+	}
+}
+
+

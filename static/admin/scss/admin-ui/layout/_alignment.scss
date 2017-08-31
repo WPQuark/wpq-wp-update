@@ -1,0 +1,28 @@
+// ==========================================================================
+// eForm Admin UI Alignment
+// ==========================================================================
+.#{$selector} {
+	.align {
+		text-align: left;
+		&-center {
+			text-align: center;
+		}
+		&-right {
+			text-align: right;
+		}
+		&-justify {
+			text-align: justify;
+		}
+	}
+
+	hr {
+		margin: 7px 0;
+		display: block;
+		width: 100%;
+		height: 1px;
+		background-color: $divider-color;
+		border: 0 none;
+	}
+}
+
+

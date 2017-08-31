@@ -1,0 +1,47 @@
+// ==========================================================================
+// eForm Admin Tab Focus
+// ==========================================================================
+.#{$selector} {
+	.ipt_uif_radio,
+	.ipt_uif_checkbox {
+		&:focus {
+			+ label::before {
+				box-shadow: 0 0 0 3px fade-out( $primary-color, 0.9 );
+			}
+		}
+	}
+	.ipt_uif_switch {
+		&:focus {
+			+ .lever::after {
+				box-shadow: 0 0 0 3px fade-out( $primary-color, 0.9 );
+			}
+		}
+	}
+	.ipt_uif_button {
+		&:focus {
+			box-shadow: 0 0 0 2px fade-out( $primary-color, 0.9 );
+		}
+	}
+
+	.ui-tabs-nav {
+		a {
+			&:focus {
+				box-shadow: 0 0 0 1px fade-out( $primary-color, 0.9 );
+			}
+		}
+	}
+	.form-table {
+		th {
+			&:focus {
+				box-shadow: 0 0 0 1px fade-out( $primary-color, 0.9 );
+			}
+		}
+	}
+	.ipt_uif_select {
+		&:focus {
+			box-shadow: 0 0 0 2px fade-out( $primary-color, 0.9 );
+		}
+	}
+}
+
+
