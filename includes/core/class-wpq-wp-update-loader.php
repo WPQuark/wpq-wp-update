@@ -95,7 +95,7 @@ class WPQ_WP_Update_Loader {
 		add_action( 'plugins_loaded', array( $this, 'auto_upgrade' ) );
 
 		// Init globals
-		$this->init_globals();
+		self::init_globals();
 
 		// Do some admin related stuff
 		if ( is_admin() ) {
@@ -107,12 +107,23 @@ class WPQ_WP_Update_Loader {
 			// Add some CSS/JS to the widgets and customizer area
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_menu_style' ) );
 		}
+
+		// Register rest
+		add_action( 'rest_api_init', array( $this, 'rest_init' ) );
 	}
 
-	public function init_globals() {
-		global $wpq_wp_update, $wpq_wp_update_config;
+	public static function init_globals() {
+		global $wpq_wp_update, $wpq_wp_update_config, $wpdb;
 		$wpq_wp_update = get_option( 'wpq_wp_update' );
 		$wpq_wp_update_config = get_option( 'wpq_wp_update_config' );
+		$wpq_wp_update['token_table'] = $wpdb->prefix . 'wpq_wpupdate_token';
+		$wpq_wp_update['log_table'] = $wpdb->prefix . 'wpq_wpupdate_log';
+	}
+
+	public function rest_init() {
+		// Activator
+		$activation_controller = new WPQ_WP_Update_Rest_Activation_Controller();
+		$activation_controller->register_routes();
 	}
 
 	/*==========================================================================

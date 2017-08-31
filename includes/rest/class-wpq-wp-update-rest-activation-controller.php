@@ -13,14 +13,68 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 	}
 
 	public function register_routes() {
-
+		register_rest_route( $this->namespace, '/' . $this->resource_name, array(
+			// Read Activation Status
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'get_activation' ),
+				'permission_callback' => array( $this, 'check_permission' ),
+			),
+			// Write Activation Status
+			array(
+				'methods' => 'POST',
+				'callback' => array( $this, 'set_activation' ),
+				'permission_callback' => array( $this, 'check_permission' ),
+			),
+		) );
+		WPQ_WP_Update_Loader::init_globals();
 	}
 
 	public function get_activation( $request ) {
+		return rest_ensure_response( $this->get_activation_data( $request ) );
+	}
 
+	private function get_activation_data( $request ) {
+		global $wpdb, $wpq_wp_update, $wpq_wp_update_config;
+
+		// Now go fetch the record
+		$purchase_code = wp_unslash( $_REQUEST['purchase_code'] );
+		$record = $wpdb->get_row( $wpdb->prepare( "SELECT purchase_code, domain, expire FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s AND slug = %s", $purchase_code, $request['slug'] ) ); // WPCS: unprepared SQL ok.
+
+		if ( ! $record ) {
+			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Purchase Code or Slug', 'wpq-wp-update' ), array(
+				'status' => 404,
+			) );
+		} else {
+			return $record;
+		}
 	}
 
 	public function set_activation( $request ) {
+		$purchase_code = wp_unslash( $_REQUEST['purchase_code'] );
+		$item_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
+		return rest_ensure_response( $this->verify_purchase_code( $item_id, $purchase_code ) );
+	}
 
+	private function verify_purchase_code( $item_id, $purchase_code ) {
+		return WPQ_WP_Update_Helpers::get_purchase_data( $item_id, $purchase_code );
+	}
+
+	public function check_permission( $request ) {
+		global $wpdb, $wpq_wp_update, $wpq_wp_update_config;
+		// Check the slug
+		if ( ! isset( $request['slug'] ) || empty( $request['slug'] ) || ! isset( $_REQUEST['purchase_code'] ) ) {
+			return new WP_Error( 'rest_forbidden', esc_html__( 'No slug specified', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		// Now see if the slug is present in the config
+		$envato_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
+		if ( false === $envato_id ) {
+			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Slug', 'wpq-wp-update' ), array(
+				'status' => 400,
+			) );
+		}
+		return true;
 	}
 }

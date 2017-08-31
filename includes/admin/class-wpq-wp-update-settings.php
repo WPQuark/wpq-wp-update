@@ -43,10 +43,18 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 		global $wpq_wp_update_config;
 		// Items
 		$items = array();
+		// Envato User
+		$items[] = array(
+			'name' => 'wpq_wpupdate_config[envato_user]',
+			'label' => __( 'Envato User Name', 'wpq-wp-update' ),
+			'ui' => 'text',
+			'param' => array( 'wpq_wpupdate_config[envato_user]', $wpq_wp_update_config['envato_user'], __( 'Required', 'wpq-wp-update' ) ),
+			'help' => __( 'Your envato username.', 'wpq-wp-update' ),
+		);
 		// Envato API Key
 		$items[] = array(
 			'name' => 'wpq_wpupdate_config[envato_api]',
-			'label' => __( 'Envato API Key', 'wpq-wp-update' ),
+			'label' => __( 'Envato API Key (Personal Token)', 'wpq-wp-update' ),
 			'ui' => 'text',
 			'param' => array( 'wpq_wpupdate_config[envato_api]', $wpq_wp_update_config['envato_api'], __( 'Required', 'wpq-wp-update' ) ),
 			'help' => __( 'Envato API Key with all needed permissions.', 'wpq-wp-update' ),
@@ -174,6 +182,7 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 		}
 		// Save
 		$new_options = array(
+			'envato_user' => isset( $this->post['wpq_wpupdate_config']['envato_user'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['envato_user'] ) : '',
 			'envato_api' => isset( $this->post['wpq_wpupdate_config']['envato_api'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['envato_api'] ) : '',
 			'distribution' => isset( $this->post['wpq_wpupdate_config']['distribution'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['distribution'] ) : dirname( ABSPATH ) . '/distributions/',
 			'masterkey' => isset( $this->post['wpq_wpupdate_config']['masterkey'] ) ? strip_tags( $this->post['wpq_wpupdate_config']['masterkey'] ) : uniqid( 'wpq-wp-update-' ),

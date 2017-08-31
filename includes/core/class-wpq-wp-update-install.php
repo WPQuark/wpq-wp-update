@@ -147,6 +147,7 @@ class WPQ_WP_Update_Install {
 			'distribution' => dirname( ABSPATH ) . '/distributions/',
 			'masterkey' => uniqid( 'wpq-wp-update-' ),
 			'envato_api' => '',
+			'envato_user' => '',
 			'product_maps' => array(),
 		);
 
