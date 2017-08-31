@@ -65,13 +65,12 @@ class WPQ_WP_Update_Helpers {
 
 	public static function get_envato_restclient( $base_url = 'https://api.envato.com/v3/market' ) {
 		global $wpq_wp_update_config;
-		$api = new RestClient( array(
+		return new RestClient( array(
 			'base_url' => $base_url,
 			'format' => 'json',
 			'headers' => array(
 				'Authorization'  => 'Bearer ' . $wpq_wp_update_config['envato_api'],
 			),
 		) );
-		return $api;
 	}
 }
