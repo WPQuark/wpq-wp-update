@@ -18,20 +18,21 @@ class WPQ_WP_Update_Helpers {
 	 */
 	public static function check_slug_presence( $slug ) {
 		global $wpq_wp_update_config;
+		$item_ids = array();
 		foreach ( (array) $wpq_wp_update_config['product_maps'] as $product ) {
 			if ( $slug == $product['slug'] ) {
-				return $product['item_id'];
+				$item_ids[] = $product['item_id'];
 			}
 		}
-		return false;
+		return $item_ids;
 	}
 
-	public static function get_purchase_data( $item_id, $purchase_code ) {
+	public static function get_purchase_data( $item_ids, $purchase_code ) {
 		global $wpq_wp_update_config;
 		// If requesting through a masterkey, then just return
 		if ( $wpq_wp_update_config['masterkey'] == $purchase_code ) {
 			return array(
-				'item_id' => $item_id,
+				'item_id' => $item_ids[0],
 				'expiry' => date( 'Y-m-d H:i:s', strtotime( '+100 years' ) ),
 				'buyer' => 'master',
 				'license' => 'perpetual',

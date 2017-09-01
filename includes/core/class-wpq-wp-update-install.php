@@ -98,6 +98,7 @@ class WPQ_WP_Update_Install {
 			license VARCHAR(50) NOT NULL default '',
 			purchase_date DATETIME NOT NULL default '0000-00-00 00:00:00',
 			buyer VARCHAR(20) NOT NULL default '',
+			item_id BIGINT(20) UNSIGNED NOT NULL default '0',
 			PRIMARY KEY  (id),
 			UNIQUE KEY token (token),
 			UNIQUE KEY purchase_code ( purchase_code ),

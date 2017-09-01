@@ -36,5 +36,6 @@ class WPQ_WP_Update_Dashboard extends WPQ_WP_Update_Admin {
 	 */
 	public function index() {
 		echo '<h1>Hello World</h1>';
+		echo '<p>We will be showing stats and graphs over here. Stay tuned.</p>';
 	}
 }

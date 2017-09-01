@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP Update Server
-Description: WP Update Server for your private & commercial Plugins
-Plugin URI: http://wpquark.com
+Description: WP Update Server for your private & commercial Plugins hosted on Envato
+Plugin URI: https://github.com/WPQuark/wpq-wp-update
 Author: Swashata
 Author URI: http://swashata.me
-Version: 0.0.7
+Version: 0.0.8
 License: GPL3
 Text Domain: wpq-wp-update
 Domain Path: translations
@@ -38,5 +38,5 @@ require_once WPQ_WPUPDATE_ABSPATH . 'vendor/autoload.php';
 require_once WPQ_WPUPDATE_ABSPATH . 'vendor/yahnis-elsts/wp-update-server/loader.php';
 
 global $wpq_wp_update_load;
-$wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.0.7' );
+$wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.0.8' );
 $wpq_wp_update_load->load();

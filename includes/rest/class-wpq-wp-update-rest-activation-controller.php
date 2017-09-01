@@ -53,11 +53,10 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 
 	public function set_activation( $request ) {
 		$purchase_code = wp_unslash( $_REQUEST['purchase_code'] );
-		$item_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
-		return rest_ensure_response( $this->register_activation( $request['slug'], $item_id, $purchase_code, $_REQUEST['domain'] ) );
+		return rest_ensure_response( $this->register_activation( $request['slug'], $purchase_code, $_REQUEST['domain'] ) );
 	}
 
-	private function register_activation( $slug, $item_id, $purchase_code, $domain ) {
+	private function register_activation( $slug, $purchase_code, $domain ) {
 		global $wpdb, $wpq_wp_update;
 		// License Utility
 		$license = new WPQ_WP_Update_License( $slug, $domain, $purchase_code );
@@ -92,7 +91,7 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 		}
 		// Now see if the slug is present in the config
 		$envato_id = WPQ_WP_Update_Helpers::check_slug_presence( $request['slug'] );
-		if ( false === $envato_id ) {
+		if ( empty( $envato_id ) ) {
 			return new WP_Error( 'rest_invalid_param', esc_html__( 'Invalid Slug', 'wpq-wp-update' ), array(
 				'status' => 400,
 			) );

@@ -83,7 +83,7 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 				'type' => 'spinner',
 			),
 			1 => array(
-				'label' => __( 'Directory SLUG', 'wpq-wp-update' ),
+				'label' => __( 'Plugin/Theme SLUG', 'wpq-wp-update' ),
 				'size' => '75',
 				'type' => 'text',
 			),
@@ -123,6 +123,7 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 				$max_key,
 			),
 			'help' => __( 'Map envato items with slug. slug is the relative path to the distribution directory where we will try to find slug.zip for package.', 'wpq-wp-update' ),
+			'description' => __( 'You can map to same slug for multiple item ids or vice-versa.', 'wpq-wp-update' ),
 		);
 
 		$this->ui->form_table( $items );

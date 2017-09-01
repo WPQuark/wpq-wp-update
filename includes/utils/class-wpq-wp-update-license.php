@@ -8,14 +8,14 @@
  */
 class WPQ_WP_Update_License {
 	protected $slug;
-	protected $item_id;
+	protected $item_ids;
 	protected $token;
 	protected $purchase_code;
 	protected $domain;
 
 	public function __construct( $slug, $domain = '', $purchase_code = '', $token = '' ) {
 		$this->slug = $slug;
-		$this->item_id = WPQ_WP_Update_Helpers::check_slug_presence( $slug );
+		$this->item_ids = WPQ_WP_Update_Helpers::check_slug_presence( $slug );
 		$this->token = $token;
 		$this->purchase_code = $purchase_code;
 		$this->domain = $domain;
@@ -25,7 +25,7 @@ class WPQ_WP_Update_License {
 	public function get_activation_data() {
 		global $wpdb, $wpq_wp_update;
 		// If item_id not set, then it has to be error
-		if ( false === $this->item_id ) {
+		if ( empty( $this->item_ids ) ) {
 			return false;
 		}
 		// Now get the row and return
@@ -35,11 +35,11 @@ class WPQ_WP_Update_License {
 	public function register_activation() {
 		global $wpdb, $wpq_wp_update;
 		// If item_id not set, then it has to be error
-		if ( false === $this->item_id ) {
+		if ( empty( $this->item_ids ) ) {
 			return false;
 		}
 		// Get the item data
-		$item_data = WPQ_WP_Update_Helpers::get_purchase_data( $this->item_id, $this->purchase_code );
+		$item_data = WPQ_WP_Update_Helpers::get_purchase_data( $this->item_ids, $this->purchase_code );
 		// If could not verify
 		if ( ! $item_data ) {
 			return array(
@@ -48,7 +48,7 @@ class WPQ_WP_Update_License {
 			);
 		}
 		// Found, so check with item_id
-		if ( $this->item_id != $item_data['item_id'] ) {
+		if ( ! in_array( $item_data['item_id'], $this->item_ids ) ) {
 			return array(
 				'success' => false,
 				'error' => __( 'Invalid Purchase Code', 'wpq-wp-update' ),
@@ -69,6 +69,7 @@ class WPQ_WP_Update_License {
 			'license' => $item_data['license'],
 			'purchase_date' => $item_data['purchase_date'],
 			'buyer' => $item_data['buyer'],
+			'item_id' => $item_data['item_id'],
 		);
 		$result = $wpdb->insert( $wpq_wp_update['token_table'], $data, '%s' );
 		if ( $result ) {
