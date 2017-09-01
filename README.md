@@ -1,6 +1,6 @@
 # WordPress Plugin/Theme Update Server for Envato
 
-	Originally developed at [WPQuark Private GitLab](https://wpquark.io/wpq-server/wpq-wp-update)
+**Originally developed at [WPQuark Private GitLab](https://wpquark.io/wpq-server/wpq-wp-update)**
 
 This plugins aims to convert your WordPress installation to a secure update server
 for your plugins and themes hosted on envato market place.
@@ -45,7 +45,7 @@ Hack away buddy, hack away.
 
 ## ScreenShots
 
-[!Screenshot](screenshot.jpg)
+![Screenshot](screenshot.jpg)
 
 ## Credits
 
