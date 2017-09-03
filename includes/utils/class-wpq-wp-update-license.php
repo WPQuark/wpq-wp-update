@@ -19,7 +19,6 @@ class WPQ_WP_Update_License {
 		$this->token = $token;
 		$this->purchase_code = $purchase_code;
 		$this->domain = $domain;
-		WPQ_WP_Update_Loader::init_globals();
 	}
 
 	public function get_activation_data() {

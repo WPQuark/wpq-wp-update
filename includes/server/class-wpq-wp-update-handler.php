@@ -35,6 +35,8 @@ class WPQ_WP_Update_Handler {
 				'slug' => get_query_var( 'wpq_wp_update_slug' ),
 				'token' => get_query_var( 'wpq_wp_update_token' ),
 				'domain' => get_query_var( 'wpq_wp_update_domain' ),
+				'installed_version' => isset( $_GET['installed_version'] ) ? $_GET['installed_version'] : '-',
+				'php' => isset( $_GET['php'] ) ? $_GET['php'] : '-',
 			) );
 		}
 	}

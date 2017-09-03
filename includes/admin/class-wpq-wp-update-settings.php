@@ -191,7 +191,7 @@ class WPQ_WP_Update_Settings extends WPQ_WP_Update_Admin {
 		);
 		update_option( 'wpq_wp_update_config', $new_options );
 		// Update globals
-		$wpq_wp_update_load->init_globals();
+		WPQ_WP_Update_Loader::init_globals();
 		// Create the directories if not present
 		$distribution = trailingslashit( $new_options['distribution'] );
 		wp_mkdir_p( $distribution . 'cache' );

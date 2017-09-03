@@ -27,7 +27,6 @@ class WPQ_WP_Update_Rest_Activation_Controller {
 				'permission_callback' => array( $this, 'check_permission' ),
 			),
 		) );
-		WPQ_WP_Update_Loader::init_globals();
 	}
 
 	public function get_activation( $request ) {

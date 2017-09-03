@@ -117,7 +117,7 @@ class WPQ_WP_Update_Loader {
 
 	public static function init_globals() {
 		global $wpq_wp_update, $wpq_wp_update_config, $wpdb;
-		$wpq_wp_update = get_option( 'wpq_wp_update' );
+		$wpq_wp_update = get_option( 'wpq_wp_update', array() );
 		$wpq_wp_update_config = get_option( 'wpq_wp_update_config' );
 		$wpq_wp_update['token_table'] = $wpdb->prefix . 'wpq_wpupdate_token';
 		$wpq_wp_update['log_table'] = $wpdb->prefix . 'wpq_wpupdate_log';

@@ -78,6 +78,7 @@ class WPQ_WP_Update_Install {
 			slug VARCHAR(50) NOT NULL default '',
 			itmversion VARCHAR(10) NOT NULL default '',
 			wpversion VARCHAR(10) NOT NULL default '',
+			phpversion VARCHAR(10) NOT NULL default '',
 			site_url VARCHAR(255) NOT NULL default '',
 			query_string VARCHAR(255) NOT NULL default '',
 			method VARCHAR(10) NOT NULL default 'GET',
@@ -134,9 +135,7 @@ class WPQ_WP_Update_Install {
 	 * @codeCoverageIgnore
 	 */
 	private function _reinit_globals() {
-		global $wpq_wp_update, $wpq_wp_update_config;
-		$wpq_wp_update = get_option( 'wpq_wp_update' );
-		$wpq_wp_update_config = get_option( 'wpq_wp_update_config' );
+		WPQ_WP_Update_Loader::init_globals();
 	}
 
 	/**
@@ -162,6 +161,9 @@ class WPQ_WP_Update_Install {
 			add_option( 'wpq_wp_update', $info );
 			add_option( 'wpq_wp_update_config', $config );
 		} else { // Existing install?
+			// Override the version
+			$existing_info['version'] = WPQ_WP_Update_Loader::$version;
+			// Add anything new
 			$new_info = wp_parse_args( $existing_info, $info );
 			update_option( 'wpq_wp_update', $new_info );
 			$new_config = wp_parse_args( get_option( 'wpq_wp_update_config' ), $config );
