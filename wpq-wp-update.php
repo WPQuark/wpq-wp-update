@@ -5,7 +5,7 @@ Description: WP Update Server for your private & commercial Plugins hosted on En
 Plugin URI: https://github.com/WPQuark/wpq-wp-update
 Author: Swashata
 Author URI: http://swashata.me
-Version: 0.1.0
+Version: 0.1.1
 License: GPL3
 Text Domain: wpq-wp-update
 Domain Path: translations
@@ -40,5 +40,5 @@ require_once WPQ_WPUPDATE_ABSPATH . 'vendor/yahnis-elsts/wp-update-server/loader
 global $wpq_wp_update_load, $wpq_wp_update;
 // Initiate the globals first
 WPQ_WP_Update_Loader::init_globals();
-$wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.1.0' );
+$wpq_wp_update_load = WPQ_WP_Update_Loader::instance( __FILE__, '0.1.1' );
 $wpq_wp_update_load->load();

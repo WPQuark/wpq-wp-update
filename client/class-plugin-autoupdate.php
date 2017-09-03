@@ -139,7 +139,7 @@ class Plugin_AutoUpdate {
 				'activated' => true,
 				'msg' => __( 'Your product Plugin is activated and receiving automatic updates.', 'ipt_fsqm' ),
 			);
-		} elseif ( '' != $purchase_code ) {
+		} elseif ( '' != $purchase_code && '' == $token_data ) {
 			$return = array(
 				'activated' => false,
 				'msg' => __( 'The purchase code is invalid. Please enter a correct one.', 'ipt_fsqm' ),
@@ -209,7 +209,7 @@ class Plugin_AutoUpdate {
 
 		$json = json_decode( $result['body'], true );
 
-		if ( $this->get_domain() == $json['domain'] ) {
+		if ( $this->get_domain() == $json['domain'] && $this->get_token() == $json['token'] ) {
 			return true;
 		} else {
 			return false;

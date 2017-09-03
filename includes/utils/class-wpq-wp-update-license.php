@@ -28,7 +28,7 @@ class WPQ_WP_Update_License {
 			return false;
 		}
 		// Now get the row and return
-		return $wpdb->get_row( $wpdb->prepare( "SELECT purchase_code, domain, expire FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s AND slug = %s", $this->purchase_code, $this->slug ) ); // WPCS: unprepared SQL ok.
+		return $wpdb->get_row( $wpdb->prepare( "SELECT purchase_code, domain, expire, token FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s AND slug = %s", $this->purchase_code, $this->slug ) ); // WPCS: unprepared SQL ok.
 	}
 
 	public function register_activation() {

@@ -78,7 +78,7 @@ class WPQ_WP_Update_Install {
 			slug VARCHAR(50) NOT NULL default '',
 			itmversion VARCHAR(10) NOT NULL default '',
 			wpversion VARCHAR(10) NOT NULL default '',
-			phpversion VARCHAR(10) NOT NULL default '',
+			phpversion VARCHAR(100) NOT NULL default '',
 			site_url VARCHAR(255) NOT NULL default '',
 			query_string VARCHAR(255) NOT NULL default '',
 			method VARCHAR(10) NOT NULL default 'GET',
