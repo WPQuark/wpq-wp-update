@@ -37,20 +37,21 @@ class WPQ_WP_Update_Server extends Wpup_UpdateServer {
 
 	// Override the log to use database and not file
 	protected function logRequest( $request ) {
-		global $wpdb, $wpq_wp_update;
-		$data = array(
-			'accesstime' => current_time( 'mysql' ),
-			'ip' => $request->clientIp,
-			'action' => $request->param( 'action', '-' ),
-			'slug' => $request->param( 'slug', '-' ),
-			'itmversion' => $request->param( 'installed_version', '-' ),
-			'phpversion' => $request->param( 'php', '-' ),
-			'wpversion' => isset($request->wpVersion) ? $request->wpVersion : '-',
-			'site_url' => isset($request->wpSiteUrl) ? $request->wpSiteUrl : '-',
-			'query_string' => http_build_query( $request->query, '', '&' ),
-			'method' => $request->httpMethod,
-		);
-		$wpdb->insert( $wpq_wp_update['log_table'], $data, '%s' );
+		// global $wpdb, $wpq_wp_update;
+		// $data = array(
+		// 	'accesstime' => current_time( 'mysql' ),
+		// 	'ip' => $request->clientIp,
+		// 	'action' => $request->param( 'action', '-' ),
+		// 	'slug' => $request->param( 'slug', '-' ),
+		// 	'itmversion' => $request->param( 'installed_version', '-' ),
+		// 	'phpversion' => $request->param( 'php', '-' ),
+		// 	'wpversion' => isset($request->wpVersion) ? $request->wpVersion : '-',
+		// 	'site_url' => isset($request->wpSiteUrl) ? $request->wpSiteUrl : '-',
+		// 	'query_string' => http_build_query( $request->query, '', '&' ),
+		// 	'method' => $request->httpMethod,
+		// );
+		// $wpdb->insert( $wpq_wp_update['log_table'], $data, '%s' );
+		parent::logRequest();
 	}
 
 	// Override handleRequest to log after success
