@@ -77,6 +77,11 @@ class WPQ_WP_Update_License {
 				'data' => $data,
 			);
 		} else {
+			$wpdb->show_errors();
+			ob_start();
+			$wpdb->print_error();
+			var_dump( $data, $wpdb->last_query );
+			error_log( ob_get_clean() );
 			return array(
 				'success' => false,
 				'dberror' => true,
