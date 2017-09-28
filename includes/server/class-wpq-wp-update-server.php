@@ -51,7 +51,7 @@ class WPQ_WP_Update_Server extends Wpup_UpdateServer {
 		// 	'method' => $request->httpMethod,
 		// );
 		// $wpdb->insert( $wpq_wp_update['log_table'], $data, '%s' );
-		parent::logRequest();
+		parent::logRequest( $request );
 	}
 
 	// Override handleRequest to log after success
