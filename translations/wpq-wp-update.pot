@@ -1,9 +1,9 @@
 # Copyright WPQuark (c) {2017}
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Update Server 0.0.5\n"
+"Project-Id-Version: WP Update Server 0.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpq-wp-update\n"
-"POT-Creation-Date: 2017-08-31 07:43:10+00:00\n"
+"POT-Creation-Date: 2017-10-15 03:38:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,6 +22,34 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n1.0.0\n"
+
+#: client/class-plugin-autoupdate.php:102
+msgid ""
+"Plugin is not activated. To get automatic updates and other features, "
+"please activate Plugin."
+msgstr ""
+
+#: client/class-plugin-autoupdate.php:105
+msgid "Activate Plugin"
+msgstr ""
+
+#: client/class-plugin-autoupdate.php:140
+msgid "Your product Plugin is activated and receiving automatic updates."
+msgstr ""
+
+#: client/class-plugin-autoupdate.php:145
+msgid "The purchase code is invalid. Please enter a correct one."
+msgstr ""
+
+#: client/class-plugin-autoupdate.php:150
+msgid "Your product Plugin is not activated. Please enter your purchase code."
+msgstr ""
+
+#: client/class-plugin-autoupdate.php:155
+msgid ""
+"Your product Plugin is activated for another domain. Activating it here "
+"will remove activation from the other domain."
+msgstr ""
 
 #: includes/admin/class-wpq-wp-update-admin-ui.php:115
 msgid "Done"
@@ -184,12 +212,12 @@ msgid "Invalid Callback supplied"
 msgstr ""
 
 #: includes/admin/class-wpq-wp-update-admin.php:123
-#: includes/admin/class-wpq-wp-update-settings.php:138
+#: includes/admin/class-wpq-wp-update-settings.php:146
 msgid "Successfully saved the options."
 msgstr ""
 
 #: includes/admin/class-wpq-wp-update-admin.php:127
-#: includes/admin/class-wpq-wp-update-settings.php:140
+#: includes/admin/class-wpq-wp-update-settings.php:148
 msgid ""
 "Either you have not changed anything or some error has occured. Please "
 "contact the developer."
@@ -250,65 +278,78 @@ msgstr ""
 msgid "Server Settings"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:50
-msgid "Envato API Key"
+#: includes/admin/class-wpq-wp-update-settings.php:49
+msgid "Envato User Name"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:52
-#: includes/admin/class-wpq-wp-update-settings.php:60
-#: includes/admin/class-wpq-wp-update-settings.php:68
-#: includes/admin/class-wpq-wp-update-settings.php:89
-#: includes/admin/class-wpq-wp-update-settings.php:90
+#: includes/admin/class-wpq-wp-update-settings.php:51
+#: includes/admin/class-wpq-wp-update-settings.php:59
+#: includes/admin/class-wpq-wp-update-settings.php:67
+#: includes/admin/class-wpq-wp-update-settings.php:75
+#: includes/admin/class-wpq-wp-update-settings.php:96
 #: includes/admin/class-wpq-wp-update-settings.php:97
-#: includes/admin/class-wpq-wp-update-settings.php:98
+#: includes/admin/class-wpq-wp-update-settings.php:104
+#: includes/admin/class-wpq-wp-update-settings.php:105
 msgid "Required"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:53
+#: includes/admin/class-wpq-wp-update-settings.php:52
+msgid "Your envato username."
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-settings.php:57
+msgid "Envato API Key (Personal Token)"
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-settings.php:60
 msgid "Envato API Key with all needed permissions."
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:58
+#: includes/admin/class-wpq-wp-update-settings.php:65
 msgid "Path to Distribution Zip Files"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:61
+#: includes/admin/class-wpq-wp-update-settings.php:68
 msgid ""
 "Use real and absolute path where we will find every package inside "
 "<code>slug/slug.zip</code> and banners inside <code>slug/banners/...</code> "
 "directory and file."
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:66
+#: includes/admin/class-wpq-wp-update-settings.php:73
 msgid "Master Key to override Purchase code"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:69
+#: includes/admin/class-wpq-wp-update-settings.php:76
 msgid ""
 "If a request is sent with this value as <code>purchase_code</code> "
 "parameter, then we skip checking envato API."
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:74
+#: includes/admin/class-wpq-wp-update-settings.php:81
 msgid "Envato Item ID"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:79
-msgid "Directory SLUG"
+#: includes/admin/class-wpq-wp-update-settings.php:86
+msgid "Plugin/Theme SLUG"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:85
+#: includes/admin/class-wpq-wp-update-settings.php:92
 msgid "Add New Product"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:104
+#: includes/admin/class-wpq-wp-update-settings.php:111
 msgid "Envato Items"
 msgstr ""
 
-#: includes/admin/class-wpq-wp-update-settings.php:118
+#: includes/admin/class-wpq-wp-update-settings.php:125
 msgid ""
 "Map envato items with slug. slug is the relative path to the distribution "
 "directory where we will try to find slug.zip for package."
+msgstr ""
+
+#: includes/admin/class-wpq-wp-update-settings.php:126
+msgid "You can map to same slug for multiple item ids or vice-versa."
 msgstr ""
 
 #: includes/core/class-wpq-wp-update-install.php:28
@@ -319,12 +360,45 @@ msgstr ""
 msgid "Sorry, WP Update requires WordPress version 4.0.0 or better!"
 msgstr ""
 
+#: includes/rest/class-wpq-wp-update-rest-activation-controller.php:45
+msgid "Invalid Purchase Code or Slug"
+msgstr ""
+
+#: includes/rest/class-wpq-wp-update-rest-activation-controller.php:81
+msgid "No slug specified"
+msgstr ""
+
+#: includes/rest/class-wpq-wp-update-rest-activation-controller.php:87
+msgid "No purchase code specified"
+msgstr ""
+
+#: includes/rest/class-wpq-wp-update-rest-activation-controller.php:94
+msgid "Invalid Slug"
+msgstr ""
+
+#: includes/rest/class-wpq-wp-update-rest-activation-controller.php:100
+msgid "Domain Not Present"
+msgstr ""
+
+#: includes/server/class-wpq-wp-update-server.php:34
+msgid "Invalid or expired token"
+msgstr ""
+
+#: includes/utils/class-wpq-wp-update-license.php:46
+#: includes/utils/class-wpq-wp-update-license.php:53
+msgid "Invalid Purchase Code"
+msgstr ""
+
+#: includes/utils/class-wpq-wp-update-license.php:88
+msgid "Something went wrong, please try again."
+msgstr ""
+
 #. Plugin URI of the plugin/theme
-msgid "http://wpquark.com"
+msgid "https://github.com/WPQuark/wpq-wp-update"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "WP Update Server for your private & commercial Plugins"
+msgid "WP Update Server for your private & commercial Plugins hosted on Envato"
 msgstr ""
 
 #. Author of the plugin/theme

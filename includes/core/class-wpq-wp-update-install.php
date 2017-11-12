@@ -103,7 +103,8 @@ class WPQ_WP_Update_Install {
 			PRIMARY KEY  (id),
 			UNIQUE KEY token (token),
 			UNIQUE KEY purchase_code ( purchase_code ),
-			KEY domain ( domain )
+			KEY domain ( domain ),
+			KEY slug ( slug )
 		) $charset_collate;";
 
 		foreach ( $sqls as $sql ) {
