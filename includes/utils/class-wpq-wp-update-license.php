@@ -54,13 +54,19 @@ class WPQ_WP_Update_License {
 			);
 		}
 		// Item data found, so save it with a new register token
+		// Here we have a scope for perpetual license
+		if ( 'perpetual' == $item_data['license'] ) {
+			$purchase_code = bin2hex( random_bytes( 16 ) );
+		} else {
+			$purchase_code = $this->purchase_code;
+		}
 		// First delete the existing one, if any
-		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s", $this->purchase_code ) ); // WPCS: unprepared SQL ok.
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s", $purchase_code ) ); // WPCS: unprepared SQL ok.
 		// Create a new token
 		$token = bin2hex( random_bytes( 16 ) );
 		// Prepare the insert
 		$data = array(
-			'purchase_code' => $this->purchase_code,
+			'purchase_code' => $purchase_code,
 			'domain' => $this->domain,
 			'expire' => $item_data['expiry'],
 			'token' => $token,
