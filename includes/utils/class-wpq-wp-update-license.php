@@ -22,10 +22,18 @@ class WPQ_WP_Update_License {
 	}
 
 	public function get_activation_data() {
-		global $wpdb, $wpq_wp_update;
+		global $wpdb, $wpq_wp_update, $wpq_wp_update_config;
 		// If item_id not set, then it has to be error
 		if ( empty( $this->item_ids ) ) {
 			return false;
+		}
+		// If getting for a masterkey
+		if ( $this->purchase_code == $wpq_wp_update_config['masterkey'] ) {
+			$return = $wpdb->get_row( $wpdb->prepare( "SELECT domain, expire, token FROM {$wpq_wp_update['token_table']} WHERE domain = %s AND slug = %s", $this->domain, $this->slug ) ); // WPCS: unprepared SQL ok.
+			if ( $return ) {
+				$return->purchase_code = $this->purchase_code;
+			}
+			return $return;
 		}
 		// Now get the row and return
 		return $wpdb->get_row( $wpdb->prepare( "SELECT purchase_code, domain, expire, token FROM {$wpq_wp_update['token_table']} WHERE purchase_code = %s AND slug = %s", $this->purchase_code, $this->slug ) ); // WPCS: unprepared SQL ok.
@@ -57,6 +65,8 @@ class WPQ_WP_Update_License {
 		// Here we have a scope for perpetual license
 		if ( 'perpetual' == $item_data['license'] ) {
 			$purchase_code = bin2hex( random_bytes( 16 ) );
+			// Also delete any pre-existing entry from this domain
+			$wpdb->query( $wpdp->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE domain = %s", $this->domain ) ); // WPCS: unprepared SQL ok.
 		} else {
 			$purchase_code = $this->purchase_code;
 		}
