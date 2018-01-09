@@ -66,7 +66,7 @@ class WPQ_WP_Update_License {
 		if ( 'perpetual' == $item_data['license'] ) {
 			$purchase_code = bin2hex( random_bytes( 16 ) );
 			// Also delete any pre-existing entry from this domain
-			$wpdb->query( $wpdp->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE domain = %s", $this->domain ) ); // WPCS: unprepared SQL ok.
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpq_wp_update['token_table']} WHERE domain = %s", $this->domain ) ); // WPCS: unprepared SQL ok.
 		} else {
 			$purchase_code = $this->purchase_code;
 		}
